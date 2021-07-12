@@ -34,7 +34,7 @@
   {
     
     "repo": "https://github.com/bearkillerPT/App-Or-amentos-Fachada/", 
-    "video": "https://raw.githubusercontent.com/bearkillerPT/App-Or-amentos-Fachada/blob/master/fachada/demos/demo.mp4", 
+    "video": "https://raw.githubusercontent.com/bearkillerPT/App-Or-amentos-Fachada/master/fachada/demos/demo.mp4", 
     "image": "undefined",
     "title": "T&T Facades Estimates", 
     "subtitle": "App built with tkinter(Python3) to estimate the number of solar panels, A/C units and heatpump"
