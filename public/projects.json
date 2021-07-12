@@ -1,0 +1,18 @@
+[
+  {
+    "repo": "https://github.com/Unn4m3DD/microsite-pei", 
+    "video": "https://raw.githubusercontent.com/Unn4m3DD/microsite-pei/master/demo.mp4", 
+    "image": "undefined",
+    "title": "Website promotion C-ITS", 
+    "url": "https://microsite-pei.unn4m3dd.xyz/",
+    "subtitle": "Website promoting the mobile app and traffic control center"
+  },
+  {
+    "repo": "https://github.com/Unn4m3DD/symbolearn",
+    "video": "https://raw.githubusercontent.com/Unn4m3DD/symbolearn/master/demo.mp4",
+    "image": "undefined",
+    "url" : "https://microsite-pei.unn4m3dd.xyz/",
+    "title" : "SymboLearn",
+    "subtitle": "Website to learn and practice symbolic languages"
+  },
+]
