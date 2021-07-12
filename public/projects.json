@@ -1,5 +1,13 @@
 [
   {
+    "repo": "https://github.com/bearkillerPT/heaboo_log_my_work",
+    "video": "https://github.com/bearkillerPT/heaboo_log_my_work/blob/main/demos/fullDemo.mp4",
+    "image": "undefined",
+    "url" : "https://log-my-work.herokuapp.com/",
+    "title" : "Log My Work",
+    "subtitle": "Website and mobile app built with React Native! My first freelancer project"
+  },
+  {
     "repo": "https://github.com/Unn4m3DD/microsite-pei", 
     "video": "https://raw.githubusercontent.com/Unn4m3DD/microsite-pei/master/demo.mp4", 
     "image": "undefined",
