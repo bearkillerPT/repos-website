@@ -3,7 +3,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: rgb(41, 40, 40);
 }
 
 code {
@@ -12,7 +12,7 @@ code {
 
 .container {
   display: flex;
-  background-color: black;
+  background-color: rgb(73, 73, 73);
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -84,9 +84,10 @@ code {
 }
 
 .website_button {
-  background-color:#44c767;
+  width: 70px;
+  background-color:#19b12b;
 	border-radius:15px;
-	border:1px solid #18ab29;
+	border:1px solid #137e20;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
@@ -94,6 +95,10 @@ code {
 	font-size:15px;
 	padding:10px 20px;
   text-decoration: none;
+}
+
+.website_button:hover {
+  background-color:#179426;
 }
 
 .github {

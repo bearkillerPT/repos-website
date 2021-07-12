@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          My Portfolio
+        <p className="header_title">
+          BearkillerPT's Portfolio
         </p>
       </header>
       <div className='container'>{

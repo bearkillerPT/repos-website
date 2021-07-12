@@ -5,7 +5,7 @@
     "image": "undefined",
     "url" : "https://log-my-work.herokuapp.com/",
     "title" : "Log My Work",
-    "subtitle": "Website and mobile app built with React Native! My first freelancer project"
+    "subtitle": "Website and mobile app built with React Native! My first freelancer project!"
   },
   {
     "repo": "https://github.com/Unn4m3DD/microsite-pei", 
@@ -13,7 +13,7 @@
     "image": "undefined",
     "title": "Website promotion C-ITS", 
     "url": "https://microsite-pei.unn4m3dd.xyz/",
-    "subtitle": "Website promoting the mobile app and traffic control center"
+    "subtitle": "Website promoting the mobile app and traffic control center."
   },
   {
     "repo": "https://github.com/Unn4m3DD/symbolearn",
@@ -21,7 +21,7 @@
     "image": "undefined",
     "url" : "https://microsite-pei.unn4m3dd.xyz/",
     "title" : "SymboLearn",
-    "subtitle": "Website to learn and practice symbolic languages"
+    "subtitle": "Website to learn and practice symbolic languages."
   },
   {
     
@@ -29,7 +29,7 @@
     "video": "https://raw.githubusercontent.com/Unn4m3DD/xadrez-para-cegos/master/demo.mp4", 
     "image": "undefined",
     "title": "Board Description Language Demo", 
-    "subtitle": "Board description language output example"
+    "subtitle": "Board description language output example."
   },
   {
     
@@ -37,6 +37,6 @@
     "video": "https://raw.githubusercontent.com/bearkillerPT/App-Or-amentos-Fachada/master/fachada/demos/demo.mp4", 
     "image": "undefined",
     "title": "T&T Facades Estimates", 
-    "subtitle": "App built with tkinter(Python3) to estimate the number of solar panels, A/C units and heatpump"
+    "subtitle": "App built with tkinter(Python3) to estimate the number of solar panels, A/C units and heatpump."
   }
 ]
