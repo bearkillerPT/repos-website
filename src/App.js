@@ -38,17 +38,20 @@ function App() {
                     <div className="subtitle">{project.subtitle}</div>
                   </div>
                   <div className="button_container">
+                    { project.url && 
                     <div className="website_button"><a href={project.url} style={{
                       color: 'white',
                       textDecoration: 'none'
                       }}>Visit Website</a></div>
+
+                    }
                     <a className="github" href={project.repo}>
                       <FaGithub size={14*3}/>
                     </a>
                   </div>
                 </div>
                 {project.repo.includes("Unn4m3DD") &&
-                    <p>
+                    <p style={{alignSelf: 'end'}}>
                       *This project is hosted in a friends github!
                     </p>
                   }
@@ -57,6 +60,7 @@ function App() {
           );
         })
       }</div>
+      
     </div>
   );
 }
