@@ -19,7 +19,7 @@
     "repo": "https://github.com/Unn4m3DD/symbolearn",
     "video": "https://raw.githubusercontent.com/Unn4m3DD/symbolearn/master/demo.mp4",
     "image": "undefined",
-    "url" : "https://microsite-pei.unn4m3dd.xyz/",
+    "url" : "https://symbolearn.unn4m3dd.xyz/",
     "title" : "SymboLearn",
     "subtitle": "Website to learn and practice symbolic languages."
   },
@@ -28,6 +28,7 @@
     "repo": "https://github.com/bearkillerPT/Board-Description-Language_and_ABDL", 
     "video": "https://raw.githubusercontent.com/Unn4m3DD/xadrez-para-cegos/master/demo.mp4", 
     "image": "undefined",
+    "url": "https://xadrez-para-cegos.unn4m3dd.xyz/src/app",
     "title": "Board Description Language Demo", 
     "subtitle": "Board description language output example."
   },
@@ -36,6 +37,7 @@
     "repo": "https://github.com/bearkillerPT/App-Or-amentos-Fachada/", 
     "video": "https://raw.githubusercontent.com/bearkillerPT/App-Or-amentos-Fachada/master/fachada/demos/demo.mp4", 
     "image": "undefined",
+    "url": null,
     "title": "T&T Facades Estimates", 
     "subtitle": "App built with tkinter(Python3) to estimate the number of solar panels, A/C units and heatpump."
   }
