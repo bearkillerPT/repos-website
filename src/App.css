@@ -9,8 +9,5 @@
   align-items: center;
   justify-content: center;
   color: white;
-}
-
-.me_image {
-  width: 100%;
+  min-height: 50px;
 }
