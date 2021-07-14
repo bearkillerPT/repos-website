@@ -2,6 +2,8 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { FaGithub } from "react-icons/fa";
 const meImg = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/meImg.png';
+const portfolioHeader = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/portfolio.png';
+const aboutMe = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/aboutme.png';
 function App() {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
@@ -15,13 +17,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div class="wrapper">
-          <div class="neon-wrapper">
-            <span class="txt txt_portfolio" >BearkillerPT's Portfolio</span>
-            <span class="gradient"></span>
-            <span class="dodge"></span>
-          </div>
-        </div>
+        <img src={portfolioHeader} style={{flex:1}}></img>
       </header>
       <div className='container'>{
         projects.map((project, index) => {
