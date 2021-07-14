@@ -11,64 +11,6 @@
   color: white;
 }
 
-.wrapper {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #282c34;
-}
-.txt {
-  color: #ffffff;
-  background:rgb(15, 15, 15);
-  font-size:40px;
-  font-weight: bold;
-  font-family: Arial;
-  text-transform: uppercase;
-}
-.txt::before {
-  position: absolute;
-  mix-blend-mode: difference;
-  filter: blur(3px);
-}
-.txt_portfolio::before {
-  content: "BearkillerPT's Portfolio";
-}
-.txt_about::before {
-  content: "About Me";
-}
-
-.neon-wrapper {
-  display:flex;
-  filter: brightness(100%);
-  overflow: hidden;
-  background-color: #282c34;
-}
-.gradient{
-  background: linear-gradient(1.5793141156962deg, rgb(6, 227, 250) 100%,rgb(6, 160, 250) 100%);
-  position: absolute;
-  top: 0.01rem;
-  left:0.01rem;
-  width: 100%;
-  height:100%;
-  mix-blend-mode: color;
-}
-.dodge {
-  background: rgba(6, 227, 250,1);
-  position: absolute;
-  top:-100%;
-  left:-100%;
-  right:0.01rem;
-  bottom:0.01rem;
-  mix-blend-mode: soft-light;
-  animation: dodge-area 3s linear ;
-}
-@keyframes dodge-area {
-  to {
-      transform: translate(50%,50%);
-  }
-}
-
 .me_image {
   width: 100%;
 }

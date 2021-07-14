@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={portfolioHeader} style={{flex:1}}></img>
+        <img src={portfolioHeader} className="me_img"></img>
       </header>
       <div className='container'>{
         projects.map((project, index) => {
@@ -64,8 +64,8 @@ function App() {
           );
         })
       }</div>
-      <header className="App-header">
-      <img src={aboutMe} style={{flex:1}}></img>
+      <header className="App-header" >
+      <img src={aboutMe} className="me_img"></img>
       </header>
       <div className='container'>
         <div className='about_container_container'>
