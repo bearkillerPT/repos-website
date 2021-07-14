@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
 import { FaGithub } from "react-icons/fa";
+const meImg = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/meImg.png';
 function App() {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
@@ -10,6 +10,8 @@ function App() {
       .then((res) => setProjects(res))
   }, [])
   console.log(projects)
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -33,7 +35,7 @@ function App() {
                     </video>
                   }
                   {project.video == null &&
-                    <img src={project.image} className="video" />
+                    <img src={project.image} className="video" alt={meImg} />
                   }
                 </div>
                 <div className="bottom_container">
@@ -75,6 +77,34 @@ function App() {
           </div>
         </div>
       </header>
+      <div className='container'>
+        <div className='about_container_container'>
+          <div className="about_container" style={{ paddingTop: 20, position: 'relative' }}>
+            <div className="img_container">
+              <img className="me_img" src={meImg} alt="Snow" />
+            </div>
+            <div className="text">
+              <div className="title">Gil Teixeira</div>
+              <div className="subtitle">
+                Hey! I'm a portuguese guy with a degree in computer and informatic engineering, Universidade de Aveiro!
+                I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project.
+                This website is currently being hosted on a raspberry 2b with nginx!
+                Visit my github account to have a look at some of the technologies and concepts I've learned!
+              </div>
+              <div className="button_container" style={{
+                paddingTop: 20,
+                position: 'absolute',
+                bottom: 0,
+                right: 0
+              }}>
+                <a className="github" href={""} >
+                  <FaGithub size={14 * 3} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

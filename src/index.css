@@ -20,6 +20,12 @@ code {
   padding: 5px;
 }
 
+.about_container_container {
+  background-color: rgb(197, 205, 216);
+  margin: 1.2vw;
+  padding: 20px;
+  border-radius: 5px;
+}
 
 .project_container {
   position: relative;
@@ -39,16 +45,25 @@ code {
   align-items: space-between;
   flex-direction: column;
 }
+.about_container {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  flex-direction: row;
+}
 
 .img_container {
-  width: 300px;
   padding: 10px;
   align-content: center;
   justify-content: center;
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
 }
-
+.me_img{
+  width: 100%;
+  width: 150px;
+  color: black;
+}
 .video {
   width: 100%;
   min-width: 200px;
