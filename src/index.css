@@ -45,6 +45,7 @@ code {
   align-items: space-between;
   flex-direction: column;
 }
+
 .about_container {
   display: flex;
   justify-content: center;
@@ -59,25 +60,32 @@ code {
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
 }
-.me_img{
-  width: 50vh;
-  
+
+.me_img {
+  width: 100%;
+  width: 150px;
   color: black;
 }
+
+.header_img {
+  width: 50vh;
+  color: black;
+}
+
 .video {
   width: 100%;
   min-width: 200px;
   max-width: 250px;
 }
 
-.bottom_container { 
+.bottom_container {
   display: flex;
   flex-direction: row;
   padding-top: 20px;
   max-width: 500px;
 }
 
-.text { 
+.text {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -88,9 +96,9 @@ code {
   font-weight: bold;
   font-size: 20;
 }
+
 .subtitle {
   text-align: left;
-
 }
 
 .button_container {
@@ -101,20 +109,20 @@ code {
 
 .website_button {
   width: 70px;
-  background-color:#19b12b;
-	border-radius:15px;
-	border:1px solid #137e20;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
+  background-color: #19b12b;
+  border-radius: 15px;
+  border: 1px solid #137e20;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
   text-align: center;
-	font-size:15px;
-	padding:10px 20px;
+  font-size: 15px;
+  padding: 10px 20px;
   text-decoration: none;
 }
 
 .website_button:hover {
-  background-color:#179426;
+  background-color: #179426;
 }
 
 .github {
@@ -122,7 +130,8 @@ code {
   padding-left: 10px;
   color: black;
 }
-.project_footer{
+
+.project_footer {
   position: absolute;
   bottom: 0;
 }
