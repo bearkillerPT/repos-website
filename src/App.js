@@ -65,13 +65,7 @@ function App() {
         })
       }</div>
       <header className="App-header">
-        <div class="wrapper">
-          <div class="neon-wrapper">
-            <span class="txt txt_about" >About Me</span>
-            <span class="gradient"></span>
-            <span class="dodge"></span>
-          </div>
-        </div>
+      <img src={aboutMe} style={{flex:1}}></img>
       </header>
       <div className='container'>
         <div className='about_container_container'>
