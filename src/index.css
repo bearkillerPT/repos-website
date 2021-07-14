@@ -22,7 +22,8 @@ code {
 
 
 .project_container {
-  height: 375px;
+  position: relative;
+  height: 350px;
   justify-content: center;
   align-items: space-between;
   background-color: rgb(197, 205, 216);
@@ -105,4 +106,8 @@ code {
   align-self: center;
   padding-left: 10px;
   color: black;
+}
+.project_footer{
+  position: absolute;
+  bottom: 0;
 }

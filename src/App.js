@@ -29,7 +29,7 @@ function App() {
                     </video>
                   }
                   {project.video == null &&
-                    <img src={project.image} />
+                      <img src={project.image} className="video" />
                   }
                 </div>
                 <div className="bottom_container">
@@ -51,9 +51,11 @@ function App() {
                   </div>
                 </div>
                 {project.repo.includes("Unn4m3DD") &&
-                      <p>
-                        *This project is hosted in a friends github!
-                      </p>
+                  <div className="project_footer">
+                    <p>
+                      *This project is hosted in a friends github!
+                    </p>
+                  </div>
                 }
               </div >
             </div >
