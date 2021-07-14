@@ -13,9 +13,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p className="header_title">
-          BearkillerPT's Portfolio
-        </p>
+        <div class="wrapper">
+          <div class="neon-wrapper">
+            <span class="txt txt_portfolio" >BearkillerPT's Portfolio</span>
+            <span class="gradient"></span>
+            <span class="dodge"></span>
+          </div>
+        </div>
       </header>
       <div className='container'>{
         projects.map((project, index) => {
@@ -29,7 +33,7 @@ function App() {
                     </video>
                   }
                   {project.video == null &&
-                      <img src={project.image} className="video" />
+                    <img src={project.image} className="video" />
                   }
                 </div>
                 <div className="bottom_container">
@@ -62,7 +66,15 @@ function App() {
           );
         })
       }</div>
-
+      <header className="App-header">
+        <div class="wrapper">
+          <div class="neon-wrapper">
+            <span class="txt txt_about" >About Me</span>
+            <span class="gradient"></span>
+            <span class="dodge"></span>
+          </div>
+        </div>
+      </header>
     </div>
   );
 }
