@@ -34,15 +34,16 @@ code {
   align-items: space-between;
   background-color: rgb(197, 205, 216);
   margin: 1.2vw;
+  display: flex;
   padding: 20px;
   border-radius: 5px;
+  max-width: max-content;
 }
 
 .project_item {
   max-width: 350px;
-  display: flex;
   justify-content: center;
-  align-items: space-between;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -56,10 +57,9 @@ code {
 
 .img_container {
   padding: 10px;
-  justify-content: center;
+  width: 90%;
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
-  height: fit-content;
 }
 
 .me_img {
@@ -78,9 +78,8 @@ code {
 }
 
 .video {
-  width: 100%;
-  min-width: 200px;
-  max-width: 250px;
+  width: 250px;
+  width: 90%;
 }
 
 .bottom_container {
@@ -150,7 +149,7 @@ code {
 }
 
 .project_footer {
-  flex: 1;
+  display: flex;
 }
 
 #more_info {

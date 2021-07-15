@@ -22,41 +22,45 @@ function App() {
       <div className='container'>{
         projects.map((project, index) => {
           return (
-            <div key={index} className='project_container' style={{position:'relative'}}>
+            <div key={index} className='project_container' style={{ position: 'relative' }}>
               <div className="project_item" >
                 <div className="img_container">
                   {project.video != null &&
-                    <video loop autoPlay muted className="video">
-                      <source src={project.video} type="video/mp4" />
-                    </video>
+                    <div style={{justifyContent:'center'}}>
+                      <video loop autoPlay muted className="video">
+                        <source src={project.video} type="video/mp4" />
+                      </video>
+                    </div>
                   }
                   {project.video == null &&
-                    <img src={project.image} className="video" alt={meImg} />
+                    <div>
+                      <img src={project.image} className="video" alt={meImg} />
+                    </div>
                   }
                 </div>
-                <div className="bottom_container" style={{position: 'absolute', bottom:0 }}>
+                <div className="bottom_container" style={{ position: 'absolute', bottom: 10 }}>
                   <div className="text" >
                     <div className="title">{project.title}</div>
                     <div className="subtitle">{project.subtitle}</div>
                     <div className="button_container" style={{
                       padding: 20
                     }}>
-                    {project.url &&
-                      <div className="website_button"><a href={project.url} style={{
-                        color: 'white',
-                        textDecoration: 'none'
-                      }}>Visit Website</a></div>
+                      {project.url &&
+                        <div className="website_button"><a href={project.url} style={{
+                          color: 'white',
+                          textDecoration: 'none'
+                        }}>Visit Website</a></div>
 
-                    }
-                    <a className="github" href={project.repo}>
-                      <FaGithub size={14 * 3} />
-                    </a>
+                      }
+                      <a className="github" href={project.repo}>
+                        <FaGithub size={14 * 3} />
+                      </a>
+                    </div>
                   </div>
-                  </div>
-                  
+
                 </div>
                 {project.repo.includes("Unn4m3DD") &&
-                  <div className="project_footer">
+                  <div className="project_footer" style={{ position: 'absolute', bottom: 0 }}>
                     <p>
                       *This project is hosted in a friends github!
                     </p>
@@ -72,14 +76,14 @@ function App() {
       </header>
       <div className='container'>
         <div className='about_container_container'>
-          <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow:'hidden' }}>
+          <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow: 'hidden' }}>
             <div>
               <div className="img_container">
                 <img className="me_img" src={meImg} alt="Snow" />
               </div>
               <div className="text" >
                 <div className="title">Gil Teixeira</div>
-                <div className="subtitle"  style={{float:'right'}}>
+                <div className="subtitle" style={{ float: 'right' }}>
                   Hey! I'm a portuguese developer with a degree in computer and informatic engineering from Universidade de Aveiro!
                   I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project.
                   The website is currently being hosted on a raspberry 2b with nginx!
@@ -87,7 +91,7 @@ function App() {
               </div>
             </div>
 
-            <div className="text"  style={{float:'right'}}>
+            <div className="text" style={{ float: 'right' }}>
               <div className="subtitle" >
                 Check out my Curriculum Vitae:
               </div>
