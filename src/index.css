@@ -29,7 +29,6 @@ code {
 }
 
 .project_container {
-  position: relative;
   height: 350px;
   justify-content: center;
   align-items: space-between;
@@ -124,7 +123,19 @@ code {
   font-family: Arial;
   text-align: center;
   font-size: 15px;
-  padding: 10px 20px;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+.one_line_button {
+  background-color: #19b12b;
+  border-radius: 15px;
+  border: 1px solid #137e20;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 10px;
   text-decoration: none;
 }
 
@@ -141,4 +152,8 @@ code {
 .project_footer {
   position: absolute;
   bottom: 0;
+}
+
+#more_info {
+  justify-content: center;
 }

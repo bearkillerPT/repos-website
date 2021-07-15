@@ -65,33 +65,53 @@ function App() {
         })
       }</div>
       <header className="App-header" >
-      <img src={aboutMe} className="header_img"></img>
+        <img src={aboutMe} className="header_img"></img>
       </header>
       <div className='container'>
         <div className='about_container_container'>
           <div className="about_container" style={{ paddingTop: 20, position: 'relative' }}>
-          <div className="img_container">
-              <img className="me_img" src={meImg} alt="Snow" />
-            </div>
-            <div className="text">
+            <div>
+              <div className="img_container">
+                <img className="me_img" src={meImg} alt="Snow" />
+              </div>
               <div className="title">Gil Teixeira</div>
               <div className="subtitle">
-                Hey! I'm a portuguese guy with a degree in computer and informatic engineering, Universidade de Aveiro!
+                Hey! I'm a portuguese and have a degree in computer and informatic engineering from Universidade de Aveiro!
                 I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project.
                 This website is currently being hosted on a raspberry 2b with nginx!
-                Visit my github account to have a look at some of the technologies and concepts I've learned!
+              </div>
+            </div>
+
+            <div className="text">
+              <div className="subtitle" >
+                Check out my Curriculum Vitae:
+              </div>
+              <div style={{ padding: 10 }}>
+                <div className="one_line_button"><a href={"https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/curriculo.pdf"} style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                }}>Download pdf</a></div>
+              </div>
+              <div style={{
+                justifyContent: 'center',
+                alignContent: 'center'
+              }}>
+                <div className="subtitle"  >
+                  I'm currently working at a Research Grant at Instituto de Telecomunicaçõesat the embedded systems!
+                  Visit my github account to have a look at some of the technologies and concepts I've learned!
+                </div>
               </div>
             </div>
             <div className="button_container" style={{
-                paddingTop: 20,
-                position: 'absolute',
-                bottom: 0,
-                right: 0
-              }}>
-                <a className="github" href={""} >
-                  <FaGithub size={14 * 3} />
-                </a>
-              </div>
+              paddingTop: 20,
+              position: 'absolute',
+              bottom: 0,
+              right: 0
+            }}>
+              <a className="github" href={""} >
+                <FaGithub size={14 * 3} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
