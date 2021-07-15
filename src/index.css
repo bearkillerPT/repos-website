@@ -25,6 +25,7 @@ code {
   margin: 1.2vw;
   padding: 20px;
   border-radius: 5px;
+  width: 95%;
 }
 
 .project_container {
@@ -51,6 +52,7 @@ code {
   justify-content: center;
   align-items: space-between;
   flex-direction: row;
+
 }
 
 .img_container {
@@ -59,15 +61,18 @@ code {
   justify-content: center;
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
+  height: fit-content;
 }
 
 .me_img {
   width: 100%;
   width: 150px;
   color: black;
+  background-color: rgb(197, 205, 216);;
 }
 
 .header_img {
+  height: 100%;
   max-width: 100%;
   max-height: 10vh;
   padding: 10px;

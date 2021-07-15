@@ -70,7 +70,7 @@ function App() {
       <div className='container'>
         <div className='about_container_container'>
           <div className="about_container" style={{ paddingTop: 20, position: 'relative' }}>
-            <div className="img_container">
+          <div className="img_container">
               <img className="me_img" src={meImg} alt="Snow" />
             </div>
             <div className="text">
@@ -81,7 +81,8 @@ function App() {
                 This website is currently being hosted on a raspberry 2b with nginx!
                 Visit my github account to have a look at some of the technologies and concepts I've learned!
               </div>
-              <div className="button_container" style={{
+            </div>
+            <div className="button_container" style={{
                 paddingTop: 20,
                 position: 'absolute',
                 bottom: 0,
@@ -91,7 +92,6 @@ function App() {
                   <FaGithub size={14 * 3} />
                 </a>
               </div>
-            </div>
           </div>
         </div>
       </div>
