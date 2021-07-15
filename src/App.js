@@ -22,8 +22,8 @@ function App() {
       <div className='container'>{
         projects.map((project, index) => {
           return (
-            <div key={index} className='project_container'>
-              <div className="project_item">
+            <div key={index} className='project_container' style={{ position: 'relative' }}>
+              <div className="project_item" >
                 <div className="img_container">
                   {project.video != null &&
                     <video loop autoPlay muted className="video">
@@ -69,20 +69,22 @@ function App() {
       </header>
       <div className='container'>
         <div className='about_container_container'>
-          <div className="about_container" style={{ paddingTop: 20, position: 'relative' }}>
+          <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow:'hidden' }}>
             <div>
               <div className="img_container">
                 <img className="me_img" src={meImg} alt="Snow" />
               </div>
-              <div className="title">Gil Teixeira</div>
-              <div className="subtitle">
-                Hey! I'm a portuguese and have a degree in computer and informatic engineering from Universidade de Aveiro!
-                I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project.
-                This website is currently being hosted on a raspberry 2b with nginx!
+              <div className="text" >
+                <div className="title">Gil Teixeira</div>
+                <div className="subtitle"  style={{float:'right'}}>
+                  Hey! I'm a portuguese and have a degree in computer and informatic engineering from Universidade de Aveiro!
+                  I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project.
+                  The website is currently being hosted on a raspberry 2b with nginx!
+                </div>
               </div>
             </div>
 
-            <div className="text">
+            <div className="text"  style={{float:'right'}}>
               <div className="subtitle" >
                 Check out my Curriculum Vitae:
               </div>
@@ -92,12 +94,9 @@ function App() {
                   textDecoration: 'none',
                 }}>Download pdf</a></div>
               </div>
-              <div style={{
-                justifyContent: 'center',
-                alignContent: 'center'
-              }}>
+              <div >
                 <div className="subtitle"  >
-                  I'm currently working at a Research Grant at Instituto de Telecomunicaçõesat the embedded systems!
+                  I'm currently working at a Research Grant at Instituto de Telecomunicações in the embedded systems group!
                   Visit my github account to have a look at some of the technologies and concepts I've learned!
                 </div>
               </div>
