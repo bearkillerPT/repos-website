@@ -77,7 +77,7 @@ function App() {
               <div className="text" >
                 <div className="title">Gil Teixeira</div>
                 <div className="subtitle"  style={{float:'right'}}>
-                  Hey! I'm a portuguese and have a degree in computer and informatic engineering from Universidade de Aveiro!
+                  Hey! I'm a portuguese developer with a degree in computer and informatic engineering from Universidade de Aveiro!
                   I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project.
                   The website is currently being hosted on a raspberry 2b with nginx!
                 </div>
