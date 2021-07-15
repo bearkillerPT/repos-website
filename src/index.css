@@ -56,8 +56,6 @@ code {
 
 .img_container {
   padding: 10px;
-  width: 100%;
-  width: 150px;
   justify-content: center;
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
@@ -112,10 +110,11 @@ code {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
 }
 
 .website_button {
-  width: 70px;
+  width: 130px;
   background-color: #19b12b;
   border-radius: 15px;
   border: 1px solid #137e20;
@@ -151,8 +150,7 @@ code {
 }
 
 .project_footer {
-  position: absolute;
-  bottom: 0;
+  flex: 1;
 }
 
 #more_info {

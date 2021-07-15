@@ -22,7 +22,7 @@ function App() {
       <div className='container'>{
         projects.map((project, index) => {
           return (
-            <div key={index} className='project_container' style={{ position: 'relative' }}>
+            <div key={index} className='project_container' style={{position:'relative'}}>
               <div className="project_item" >
                 <div className="img_container">
                   {project.video != null &&
@@ -34,12 +34,13 @@ function App() {
                     <img src={project.image} className="video" alt={meImg} />
                   }
                 </div>
-                <div className="bottom_container">
-                  <div className="text">
+                <div className="bottom_container" style={{position: 'absolute', bottom:0 }}>
+                  <div className="text" >
                     <div className="title">{project.title}</div>
                     <div className="subtitle">{project.subtitle}</div>
-                  </div>
-                  <div className="button_container">
+                    <div className="button_container" style={{
+                      padding: 20
+                    }}>
                     {project.url &&
                       <div className="website_button"><a href={project.url} style={{
                         color: 'white',
@@ -51,6 +52,8 @@ function App() {
                       <FaGithub size={14 * 3} />
                     </a>
                   </div>
+                  </div>
+                  
                 </div>
                 {project.repo.includes("Unn4m3DD") &&
                   <div className="project_footer">
