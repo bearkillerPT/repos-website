@@ -24,7 +24,7 @@ function App() {
           return (
             <div key={index} className='project_container' style={{ position: 'relative' }}>
               <div className="project_item" >
-                <div className="img_container">
+                <div className="img_container project_img">
                   {project.video != null &&
                     <div style={{justifyContent:'center'}}>
                       <video loop autoPlay muted className="video">
@@ -57,7 +57,6 @@ function App() {
                       </a>
                     </div>
                   </div>
-
                 </div>
                 {project.repo.includes("Unn4m3DD") &&
                   <div className="project_footer" style={{ position: 'absolute', bottom: 0 }}>
@@ -76,10 +75,13 @@ function App() {
       </header>
       <div className='container'>
         <div className='about_container_container'>
-          <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow: 'hidden' }}>
+          <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow: 'hidden',justifyContent: 'center' }}>
             <div>
-              <div className="img_container">
-                <img className="me_img" src={meImg} alt="Snow" />
+              <div className="img_container" style={{
+                maxWidth: 150,
+                justifyContent: 'center',
+                }}>
+                <img className="me_img" src={meImg} alt="Snow"/>
               </div>
               <div className="text" >
                 <div className="title">Gil Teixeira</div>
