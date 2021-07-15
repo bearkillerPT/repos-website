@@ -87,7 +87,7 @@ function App() {
                 Check out my Curriculum Vitae:
               </div>
               <div style={{ padding: 10 }}>
-                <div className="one_line_button"><a href={"https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/curriculo.pdf"} style={{
+                <div className="one_line_button"><a href={"https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/Curriculo.pdf"} style={{
                   color: 'white',
                   textDecoration: 'none',
                 }}>Download pdf</a></div>
