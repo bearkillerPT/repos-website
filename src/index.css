@@ -29,7 +29,7 @@ code {
 }
 
 .project_container {
-  height: 350px;
+  height: 380px;
   justify-content: center;
   align-items: space-between;
   background-color: rgb(197, 205, 216);
@@ -57,13 +57,13 @@ code {
 
 .img_container {
   padding: 10px;
-  width: 85%;
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
   align-items: center;
 }
 .project_img {
-  height: 150px;
+  height: 179px;
+  display: flex;
 }
 
 .me_img {
@@ -82,7 +82,6 @@ code {
 }
 
 .video {
-  
   width: 250px;
   width: 90%;
 }
@@ -104,6 +103,8 @@ code {
   text-align: left;
   font-weight: bold;
   font-size: 20;
+  position: absolute;
+  top: 0;
 }
 
 .subtitle {
