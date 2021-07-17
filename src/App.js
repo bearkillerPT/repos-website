@@ -1,23 +1,28 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { FaGithub } from "react-icons/fa";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 const meImg = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/meImg.png';
 const portfolioHeader = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/portfolio.png';
 const aboutMe = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/aboutme.png';
 function App() {
   const [projects, setProjects] = useState([]);
+  const [lang, setLang] = useState("en");
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/projects.json')
       .then((res) => res.json())
       .then((res) => setProjects(res))
   }, [])
   console.log(projects)
-
-
+  const langOptions = [{ value: 'pt', label: 'Português' }, { value: 'en', label: 'English' }];
   return (
     <div className="App">
       <header className="App-header">
         <img src={portfolioHeader} className="header_img"></img>
+        <div className="header_dropdown_container">
+          <Dropdown options={langOptions} baseClassName=".lang_dropdown" onChange={(obj) => { setLang(obj.value) }} placeholder={"Language"} className="lang_selector" />
+        </div>
       </header>
       <div className='container'>{
         projects.map((project, index) => {
@@ -26,7 +31,7 @@ function App() {
               <div className="project_item" >
                 <div className="img_container project_img">
                   {project.video != null &&
-                    <div style={{justifyContent:'center'}}>
+                    <div style={{ justifyContent: 'center' }}>
                       <video loop autoPlay muted className="video">
                         <source src={project.video} type="video/mp4" />
                       </video>
@@ -40,8 +45,8 @@ function App() {
                 </div>
                 <div className="bottom_container" style={{ position: 'absolute', bottom: 10 }}>
                   <div className="text" >
-                    <div className="title">{project.title}</div>
-                    <div className="subtitle">{project.subtitle}</div>
+                    <div className="title">{project.title[lang]}</div>
+                    <div className="subtitle">{project.subtitle[lang]}</div>
                     <div className="button_container" style={{
                       padding: 20
                     }}>
@@ -75,13 +80,13 @@ function App() {
       </header>
       <div className='container'>
         <div className='about_container_container'>
-          <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow: 'hidden',justifyContent: 'center' }}>
+          <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow: 'hidden', justifyContent: 'center' }}>
             <div>
               <div className="img_container" style={{
                 maxWidth: 150,
                 justifyContent: 'center',
-                }}>
-                <img className="me_img" src={meImg} alt="Snow"/>
+              }}>
+                <img className="me_img" src={meImg} alt="Snow" />
               </div>
               <div className="text" >
                 <div className="title">Gil Teixeira</div>

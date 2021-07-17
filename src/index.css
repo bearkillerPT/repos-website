@@ -75,10 +75,11 @@ code {
 
 .header_img {
   height: 100%;
-  max-width: 100%;
+  max-width: 70%;
   max-height: 10vh;
   padding: 10px;
   color: black;
+  flex: 1;
 }
 
 .video {
@@ -159,4 +160,17 @@ code {
 
 #more_info {
   justify-content: center;
+}
+
+.header_dropdown_container {
+  display: flex;
+  justify-content: left;
+  position: relative;
+}
+
+.lang_dropdown {
+  background-color: black;
+  max-width: 120px;
+  position: absolute;
+  right: 10px;
 }
