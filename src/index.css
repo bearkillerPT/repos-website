@@ -10,7 +10,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.container {
+.my_container {
   display: flex;
   background-color: rgb(73, 73, 73);
   flex-direction: row;
@@ -104,8 +104,6 @@ code {
   text-align: left;
   font-weight: bold;
   font-size: 20;
-  position: absolute;
-  top: 0;
 }
 
 .subtitle {
@@ -169,8 +167,5 @@ code {
 }
 
 .lang_dropdown {
-  background-color: black;
-  max-width: 120px;
-  position: absolute;
-  right: 10px;
+  background-color: blue;
 }

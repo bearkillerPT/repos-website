@@ -11,4 +11,14 @@
   color: white;
   min-height: 50px;
 }
+.nav-item .dropdown-menu {
+  background: #000000;
+}
 
+.nav-item .dropdown-item {
+  color: #ffffff;
+}
+
+.nav-item .dropdown-item:hover {
+  background: #f0ad4e;
+}

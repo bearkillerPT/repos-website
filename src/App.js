@@ -1,8 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { FaGithub } from "react-icons/fa";
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
+import { FaGithub } from "react-icons/fa";import 'bootstrap/dist/css/bootstrap.min.css';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { languages } from './languages';
 const meImg = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/meImg.png';
 const portfolioHeader = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/portfolio.png';
 const aboutMe = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/aboutme.png';
@@ -19,12 +19,37 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={portfolioHeader} className="header_img"></img>
-        <div className="header_dropdown_container">
-          <Dropdown options={langOptions} baseClassName=".lang_dropdown" onChange={(obj) => { setLang(obj.value) }} placeholder={"Language"} className="lang_selector" />
+        <img src={portfolioHeader} className="header_img" style={{
+                maxWidth: 900,
+              }}></img>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignContent: 'center'
+        }}>
+          <Dropdown>
+            <Dropdown.Toggle variant="dark"id="dropdown-basic">
+            {languages.language[lang]}
+            </Dropdown.Toggle>
+            <Dropdown.Menu variant="dark">
+              <Dropdown.Item
+                onClick={() => { setLang('en') }}
+              >
+                {languages.languages.english[lang]}
+              </Dropdown.Item>
+              <br />
+              <Dropdown.Item
+                onClick={() => { setLang('pt') }}
+              >
+                {languages.languages.portuguese[lang]}
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
         </div>
+
       </header>
-      <div className='container'>{
+      <div className='my_container'>{
         projects.map((project, index) => {
           return (
             <div key={index} className='project_container' style={{ position: 'relative' }}>
@@ -54,7 +79,7 @@ function App() {
                         <div className="website_button"><a href={project.url} style={{
                           color: 'white',
                           textDecoration: 'none'
-                        }}>Visit Website</a></div>
+                        }}>{languages.project.websiteButton[lang]}</a></div>
 
                       }
                       <a className="github" href={project.repo}>
@@ -66,7 +91,7 @@ function App() {
                 {project.repo.includes("Unn4m3DD") &&
                   <div className="project_footer" style={{ position: 'absolute', bottom: 0 }}>
                     <p>
-                      *This project is hosted in a friends github!
+                      {languages.project.footerNote[lang]}
                     </p>
                   </div>
                 }
@@ -76,9 +101,11 @@ function App() {
         })
       }</div>
       <header className="App-header" >
-        <img src={aboutMe} className="header_img"></img>
+        <img src={aboutMe} className="header_img" style={{
+                maxWidth: 600,
+              }}></img>
       </header>
-      <div className='container'>
+      <div className='my_container'>
         <div className='about_container_container'>
           <div className="about_container" style={{ paddingTop: 20, position: 'relative', overflow: 'hidden', justifyContent: 'center' }}>
             <div>
@@ -91,16 +118,14 @@ function App() {
               <div className="text" >
                 <div className="title">Gil Teixeira</div>
                 <div className="subtitle" style={{ float: 'right' }}>
-                  Hey! I'm a portuguese developer with a degree in computer and informatic engineering from Universidade de Aveiro!
-                  I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project.
-                  The website is currently being hosted on a raspberry 2b with nginx!
+                  {languages.aboutMeLeft[lang]}
                 </div>
               </div>
             </div>
 
             <div className="text" style={{ float: 'right' }}>
               <div className="subtitle" >
-                Check out my Curriculum Vitae:
+                {languages.checkCurriculum[lang]}
               </div>
               <div style={{ padding: 10 }}>
                 <div className="one_line_button"><a href={"https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/Curriculo.pdf"} style={{
@@ -110,8 +135,7 @@ function App() {
               </div>
               <div >
                 <div className="subtitle"  >
-                  I'm currently working at a Research Grant at Instituto de Telecomunicações in the embedded systems group!
-                  Visit my github account to have a look at some of the technologies and concepts I've learned!
+                  {languages.aboutMeRight[lang]}
                 </div>
               </div>
             </div>
