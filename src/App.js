@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { FaGithub } from "react-icons/fa";import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaGithub } from "react-icons/fa"; import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { languages } from './languages';
 const meImg = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/meImg.png';
@@ -9,29 +9,27 @@ const aboutMe = 'https://raw.githubusercontent.com/bearkillerPT/repos-website/ma
 function App() {
   const [projects, setProjects] = useState([]);
   const [lang, setLang] = useState("en");
+  const [show, setShow] = useState(false);
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/projects.json')
       .then((res) => res.json())
       .then((res) => setProjects(res))
   }, [])
-  console.log(projects)
   const langOptions = [{ value: 'pt', label: 'Português' }, { value: 'en', label: 'English' }];
   return (
     <div className="App">
       <header className="App-header">
-        <img src={portfolioHeader} className="header_img" style={{
-                maxWidth: 900,
-              }}></img>
+        <img src={portfolioHeader} className="header_img" ></img>
         <div style={{
           display: 'flex',
           justifyContent: 'center',
           alignContent: 'center'
         }}>
-          <Dropdown>
-            <Dropdown.Toggle variant="dark"id="dropdown-basic">
-            {languages.language[lang]}
+          <Dropdown >
+            <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+              {languages.language[lang]}
             </Dropdown.Toggle>
-            <Dropdown.Menu variant="dark">
+            <Dropdown.Menu variant="dark" >
               <Dropdown.Item
                 onClick={() => { setLang('en') }}
               >
@@ -102,8 +100,8 @@ function App() {
       }</div>
       <header className="App-header" >
         <img src={aboutMe} className="header_img" style={{
-                maxWidth: 600,
-              }}></img>
+          maxWidth: 600,
+        }}></img>
       </header>
       <div className='my_container'>
         <div className='about_container_container'>
