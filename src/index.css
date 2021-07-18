@@ -29,7 +29,7 @@ code {
 }
 
 .project_container {
-  height: 380px;
+  height: 400px;
   justify-content: center;
   align-items: space-between;
   background-color: rgb(197, 205, 216);

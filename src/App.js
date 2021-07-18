@@ -68,7 +68,7 @@ function App() {
                 </div>
                 <div className="bottom_container" style={{ position: 'absolute', bottom: 10 }}>
                   <div className="text" >
-                    <div className="title">{project.title[lang]}</div>
+                    <div className="title" >{project.title[lang]}</div>
                     <div className="subtitle">{project.subtitle[lang]}</div>
                     <div className="button_container" style={{
                       padding: 20
@@ -100,7 +100,7 @@ function App() {
       }</div>
       <header className="App-header" >
         <img src={aboutMe} className="header_img" style={{
-          maxWidth: 600,
+          maxWidth: 400,
         }}></img>
       </header>
       <div className='my_container'>
