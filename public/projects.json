@@ -51,8 +51,8 @@
       "pt": "Board Description Language Demo"
     },
     "subtitle": {
-      "en": "One of many Board description language output examples.",
-      "pt": "Exemplo do output de um dos exemplos escritos em BDL"
+      "en": "One of many BDL and ABDL output examples. Languages created with ANTLR4 and Java!",
+      "pt": "Um de vários exemplos de BDL e ABDL disponíveis. Linguagens criadas com ANTLR4 e Java!"
     }
   },
   {
