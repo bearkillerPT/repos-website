@@ -25,7 +25,7 @@ function App() {
           justifyContent: 'center',
           alignContent: 'center'
         }}>
-          <Dropdown >
+          <Dropdown>
             <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
               {languages.language[lang]}
             </Dropdown.Toggle>
