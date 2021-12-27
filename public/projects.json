@@ -70,6 +70,20 @@
     }
      
   },
+    {
+    "repo": "https://github.com/bearkillerPT/IV/tree/main/technical_ceramics",
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/iv.png",
+    "url": "https://iv.bearkillerpt.xyz/",
+    "title": {
+      "en": "Technical Ceramics Manufacturing",
+      "pt": "Produção de ceâmicas técnicas"
+    },
+    "subtitle": {
+      "en": "Website built with React to help visualizing manufacturing paramethers and their correlation to efficiency. Graphics built with D3.js!",
+      "pt": "Site criado em React para visualizar a relação de parâmetros de produção com o rendimento. Gráficos criados com D3.js!"
+    }
+     
+  },
   {
     "repo": "https://github.com/bearkillerPT/raspberryConfs/",
     "video": null,
