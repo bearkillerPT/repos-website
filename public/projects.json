@@ -1,6 +1,19 @@
 [
   {
     "repo": "https://github.com/bearkillerPT/heaboo_log_my_work",
+    "image": "https://github.com/bearkillerPT/DataMining/raw/main/WebApp/public/site_print.png",
+    "url": "http://heaboo.bearkillerpt.xyz/",
+    "title": {
+      "en": "Data Mining",
+      "pt": "Exploração de Dados"
+    },
+    "subtitle": {
+      "en": "Notebook Jupyter, flask api and react web app. 6 Machine learning Algorithm Models!",
+      "pt": "Notebook Jupyter, flask api e react web app. 6 Modelos de Algoritmos de Machine Learning!"
+    }
+  },
+  {
+    "repo": "https://github.com/bearkillerPT/heaboo_log_my_work",
     "video": "https://raw.githubusercontent.com/bearkillerPT/heaboo_log_my_work/main/demos/fullDemo.mp4",
     "image": null,
     "url": "http://heaboo.bearkillerpt.xyz/",
