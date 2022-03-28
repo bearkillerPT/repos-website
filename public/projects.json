@@ -1,5 +1,18 @@
 [
   {
+    "repo": "https://github.com/bearkillerPT/Auchan-CartList",
+    "video": "https://www.youtube.com/watch?v=ZAAh-R4l3j0",
+    "url": "https://chrome.google.com/webstore/detail/auchan2list/nhooimeiofnpmihcdphbdoblnfebclon",
+    "title": {
+      "en": "Auchan2List",
+      "pt": "Auchan2List"
+    },
+    "subtitle": {
+      "en": "Chrome Extension to export and import shopping carts!",
+      "pt": "Extensão do Chrome para importar e exportar carrinhos de compras!"
+    }
+  },
+  {
     "repo": "https://github.com/bearkillerPT/DataMining",
     "image": "https://github.com/bearkillerPT/DataMining/raw/main/WebApp/public/site_print.png",
     "url": "https://ed.bearkillerpt.xyz/",
