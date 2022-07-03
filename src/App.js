@@ -143,7 +143,7 @@ function App() {
               bottom: 0,
               right: 0
             }}>
-              <a className="github" href={""} >
+              <a className="github" href={"https://github.com/bearkillerPT/"} >
                 <FaGithub size={14 * 3} />
               </a>
             </div>
