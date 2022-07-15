@@ -5,9 +5,14 @@
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/cle.png",
     "url": "https://chrome.google.com/webstore/detail/auchan2list/nhooimeiofnpmihcdphbdoblnfebclon",
     "title": {
-      "en": "Auchan2List",
-      "pt": "Auchan2List"
+      "en": "Large Scale Computations",
+      "pt": "Computações em Larga Escala"
     },
+    "subtitle": {
+      "en": "Gaussian Jordan Elimination performed with pthread, mpich and cuda!",
+      "pt": "Eliminação Gaussiana-Jordan com pthread, mpich e cuda!"
+    }
+  }.
   {
     "repo": "https://github.com/bearkillerPT/Auchan-CartList",
     "video": "https://github.com/bearkillerPT/Auchan-CartList/raw/main/Auchan2ListDemo.mp4",
