@@ -1,0 +1,1 @@
+ssh pi@bearkillerpt.xyz cd "repos-website; ./update.sh; exit"
