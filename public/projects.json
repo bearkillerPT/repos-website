@@ -1,4 +1,18 @@
 [
+  {
+    "repo": "https://github.com/expo/expo/pull/18225",
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/expoPT.png",
+    "url": null,
+    "title": {
+      "en": "Expo PR",
+      "pt": "PR Expo"
+    },
+    "subtitle": {
+      "en": "Pull Request for a huge project to introduce the light sensor to Expo-Sensors!",
+      "pt": "Pull Request para um projeto de grandes dimenções para introduzir o sensor de luminusidade ao Expo-Sensors!"
+    }
+  }, 
  {
     "repo": "https://github.com/bearkillerPT/metinCV",
     "video": "https://github.com/bearkillerPT/repos-website/raw/main/public/metin.mp4",
