@@ -1,5 +1,19 @@
 [
-  {
+ {
+    "repo": "https://github.com/bearkillerPT/metinCV",
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/cle.png",
+    "url": null,
+    "title": {
+      "en": "Bot Metin2",
+      "pt": "Metin2 Farm Bot"
+    },
+    "subtitle": {
+      "en": "Fun project in python3 with openCV, pyautogui and autoit (for mouse events)",
+      "pt": "Projeto pequeno em python3 com openCV, pyautogui e autoit (para simular eventos de rato)"
+    }
+  }, 
+ {
     "repo": "https://github.com/bearkillerPT/CLE",
     "video": null,
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/cle.png",
