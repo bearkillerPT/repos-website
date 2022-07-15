@@ -1,5 +1,14 @@
 [
   {
+    "repo": "https://github.com/bearkillerPT/CLE",
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/cle.png",
+    "url": "https://chrome.google.com/webstore/detail/auchan2list/nhooimeiofnpmihcdphbdoblnfebclon",
+    "title": {
+      "en": "Auchan2List",
+      "pt": "Auchan2List"
+    },
+  {
     "repo": "https://github.com/bearkillerPT/Auchan-CartList",
     "video": "https://github.com/bearkillerPT/Auchan-CartList/raw/main/Auchan2ListDemo.mp4",
     "image": null,
