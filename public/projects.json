@@ -1,9 +1,37 @@
 [
   {
+    "repo": "https://github.com/expo/expo/pull/18225",
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/expoPR.png",
+    "url": null,
+    "title": {
+      "en": "Expo PR",
+      "pt": "PR Expo"
+    },
+    "subtitle": {
+      "en": "Pull Request for a huge project to introduce the light sensor to Expo-Sensors!",
+      "pt": "Pull Request para um projeto de grandes dimenções para introduzir o sensor de luminusidade ao Expo-Sensors!"
+    }
+  }, 
+ {
+    "repo": "https://github.com/bearkillerPT/metinCV",
+    "video": "https://github.com/bearkillerPT/repos-website/raw/main/public/metin.mp4",
+    "image": null,
+    "url": null,
+    "title": {
+      "en": "Bot Metin2",
+      "pt": "Metin2 Farm Bot"
+    },
+    "subtitle": {
+      "en": "Fun project in python3 with openCV, pyautogui and autoit (for mouse events)",
+      "pt": "Projeto pequeno em python3 com openCV, pyautogui e autoit (para simular eventos de rato)"
+    }
+  }, 
+ {
     "repo": "https://github.com/bearkillerPT/CLE",
     "video": null,
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/cle.png",
-    "url": "https://chrome.google.com/webstore/detail/auchan2list/nhooimeiofnpmihcdphbdoblnfebclon",
+    "url": null,
     "title": {
       "en": "Large Scale Computations",
       "pt": "Computações em Larga Escala"
