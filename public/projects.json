@@ -13,18 +13,32 @@
       "pt": "Pull Request para um projeto de grandes dimenções para introduzir o sensor de luminusidade ao Expo-Sensors!"
     }
   }, 
+   {
+    "repo": "https://github.com/bearkillerPT/pokeMMOFarmBoye",
+    "video": "https://github.com/bearkillerPT/pokeMMOFarmBoye/blob/main/pokemmo8x.mp4",
+    "image": null,
+    "url": null,
+    "title": {
+      "en": "PokeMMO Farm Bot",
+      "pt": "PokeMMO Farm Bot"
+    },
+    "subtitle": {
+      "en": "Fun project in python3 with openCV, pyautogui and autoit (for mouse events)",
+      "pt": "Projeto pequeno em python3 com openCV, pyautogui e autoit (para simular eventos de rato)"
+    }
+  }, 
  {
     "repo": "https://github.com/bearkillerPT/metinCV",
     "video": "https://github.com/bearkillerPT/repos-website/raw/main/public/metin.mp4",
     "image": null,
     "url": null,
     "title": {
-      "en": "Bot Metin2",
+      "en": "Metin2 Farm Bot",
       "pt": "Metin2 Farm Bot"
     },
     "subtitle": {
-      "en": "Fun project in python3 with openCV, pyautogui and autoit (for mouse events)",
-      "pt": "Projeto pequeno em python3 com openCV, pyautogui e autoit (para simular eventos de rato)"
+      "en": "Another fun project in python3 with openCV, pyautogui and autoit (for mouse events)",
+      "pt": "Another projeto pequeno em python3 com openCV, pyautogui e autoit (para simular eventos de rato)"
     }
   }, 
  {
