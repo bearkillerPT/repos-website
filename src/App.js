@@ -80,13 +80,15 @@ function App() {
                         }}>{languages.project.websiteButton[lang]}</a></div>
 
                       }
-                      <a className="github" href={project.repo}>
-                        <FaGithub size={14 * 3} />
-                      </a>
+                      {project.repo &&
+                        <a className="github" href={project.repo}>
+                          <FaGithub size={14 * 3} />
+                        </a>
+                        }
                     </div>
                   </div>
                 </div>
-                {project.repo.includes("Unn4m3DD") &&
+                {project.repo && project.repo.includes("Unn4m3DD") &&
                   <div className="project_footer" style={{ position: 'absolute', bottom: 0 }}>
                     <p>
                       {languages.project.footerNote[lang]}
