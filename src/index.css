@@ -63,12 +63,12 @@ code {
   justify-content: center;
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
-  padding: 10%;
+  padding: 2%;
   align-items: center;
 }
 .project_img {
   flex:1;
-  height: 179px;
+  max-height: 350px;
 }
 
 .me_img {
