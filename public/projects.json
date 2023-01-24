@@ -1,5 +1,33 @@
 [
   {
+    "repo": null,
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/heabooESP.png",
+    "url": null,
+    "title": {
+      "en": "Heaboo ESP32 Firmware",
+      "pt": "Firmware Heaboo ESP32"
+    },
+    "subtitle": {
+      "en": "ESP32 firmware for a Heaboo,lda project. Creates an access point for Wifi configuration, monitors status and temperatures and sends them to a server.",
+      "pt": "Firmware ESP32 para um projeto da Heaboo,lda. Cria um ponto de acesso para configuração de Wifi, monitoriza o estado e as temperaturas e envia-os para um servidor."
+    }
+  },
+  {
+    "repo": null,
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/auditwaiting.png",
+    "url": "https://auditwaiting.com/PublicReport/-NFtQ4Jr0o_gvBD_HCFL",
+    "title": {
+      "en": "Auditwaiting",
+      "pt": "Auditwaiting"
+    },
+    "subtitle": {
+      "en": "The Audit Waiting tool analyzes the domestic hot water distribution project and presents the waiting times and waste in each compartment.",
+      "pt": "A ferramenta Audit Waiting faz uma análise ao projeto de distribuição de água quente sanitária e apresenta os tempos de espera e desperdício em cada compartimento."
+    }
+  },
+  {
     "repo": "https://github.com/expo/expo/pull/18225",
     "video": null,
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/expoPR.png",
@@ -9,8 +37,8 @@
       "pt": "PR Expo"
     },
     "subtitle": {
-      "en": "Pull Request for a huge project to introduce the light sensor to Expo-Sensors!",
-      "pt": "Pull Request para um projeto de grandes dimenções para introduzir o sensor de luminusidade ao Expo-Sensors!"
+      "en": "Implementation in android of the light sensor for Expo-Sensors!",
+      "pt": "Implementação em android do sensor de luminusidade para o Expo-Sensors!"
     }
   }, 
    {
