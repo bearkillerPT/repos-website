@@ -50,7 +50,7 @@ function App() {
       <div className='my_container'>{
         projects.map((project, index) => {
           return (
-            <div key={index} className='project_container' style={{ position: 'relative' }}>
+            <div key={index} className='project_container' >
               <div className="project_item" >
                 <div className="img_container project_img">
                   {project.video != null &&
@@ -61,12 +61,12 @@ function App() {
                     </div>
                   }
                   {project.video == null &&
-                    <div>
+                    <div className="img_container">
                       <img src={project.image} className="video" alt={meImg} />
                     </div>
                   }
                 </div>
-                <div className="bottom_container" style={{ position: 'absolute', bottom: 10 }}>
+                <div className="bottom_container">
                   <div className="text" >
                     <div className="title" >{project.title[lang]}</div>
                     <div className="subtitle">{project.subtitle[lang]}</div>
@@ -89,7 +89,7 @@ function App() {
                   </div>
                 </div>
                 {project.repo && project.repo.includes("Unn4m3DD") &&
-                  <div className="project_footer" style={{ position: 'absolute', bottom: 0 }}>
+                  <div className="project_footer">
                     <p>
                       {languages.project.footerNote[lang]}
                     </p>

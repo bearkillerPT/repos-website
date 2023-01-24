@@ -29,19 +29,19 @@ code {
 }
 
 .project_container {
+  display: flex;
   height: 400px;
   justify-content: center;
   align-items: space-between;
   background-color: rgb(197, 205, 216);
   margin: 1.2vw;
-  display: flex;
+  width: 30%;
   padding: 20px;
   border-radius: 5px;
-  max-width: max-content;
 }
 
 .project_item {
-  max-width: 350px;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -55,15 +55,20 @@ code {
 
 }
 
-.img_container {
-  padding: 10px;
+.img_container{
+  display: flex;
+  flex-direction: row;
+  aspect-ratio: 1920/1080;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(229, 237, 250);
   border-radius: 5px;
+  padding: 10%;
   align-items: center;
 }
 .project_img {
+  flex:1;
   height: 179px;
-  display: flex;
 }
 
 .me_img {
@@ -91,7 +96,9 @@ code {
 
 
 .video {
+  flex:1;
   width: 250px;
+  max-height: 200px;
   width: 90%;
 }
 
@@ -105,16 +112,17 @@ code {
 .text {
   display: flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 .title {
+  flex:1;
   text-align: left;
   font-weight: bold;
   font-size: 20;
 }
 
 .subtitle {
+  flex:1;
   text-align: left;
 }
 
