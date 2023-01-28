@@ -35,7 +35,8 @@ code {
   align-items: space-between;
   background-color: rgb(197, 205, 216);
   margin: 1.2vw;
-  min-width: 30%;
+  min-width: 25%;
+  max-width: 400px;
   padding: 20px;
   border-radius: 5px;
 }
