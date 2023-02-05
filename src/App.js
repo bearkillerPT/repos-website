@@ -55,7 +55,7 @@ function App() {
                 <div className="img_container project_img">
                   {project.video != null &&
                     <div style={{ justifyContent: 'center' }}>
-                      <video loop autoPlay playsinline muted controls className="video">
+                      <video loop autoPlay muted controls className="video">
                         <source src={project.video} type="video/mp4" />
                       </video>
                     </div>
