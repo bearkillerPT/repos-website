@@ -1,5 +1,19 @@
 [
   {
+    "repo": null,
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/firstPaper.png",
+    "url": "https://www.mdpi.com/1424-8220/23/3/1724",
+    "title": {
+      "en": "My first published paper!",
+      "pt": "O meu primeiiro paper!"
+    },
+    "subtitle": {
+      "en": "A Modular In-Vehicle C-ITS Architecture for Sensor Data Collection, Vehicular Communications and Cloud Connectivity",
+      "pt": "Uma arquitetura C-ITS modular no veículo para coleta de dados de sensores, comunicações veiculares e conectividade em nuvem"
+    }
+  },
+  {
     "repo": "https://github.com/bearkillerPT/HeabooComercial",
     "video": null,
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/heabooESP.png",
