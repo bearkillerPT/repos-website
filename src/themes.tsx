@@ -1,5 +1,5 @@
 import { PaletteColorOptions, createTheme } from '@mui/material/styles';
-import { deepPurple, blueGrey, indigo, grey} from '@mui/material/colors';
+import { deepPurple, blueGrey, grey} from '@mui/material/colors';
 
 const colorToPaletteColorOptions = (color: string) => {
     return {
@@ -16,7 +16,7 @@ export const lightTheme = createTheme({
 
 export const darkTheme = createTheme({
     palette: {
-        primary: colorToPaletteColorOptions(indigo[900]),
+        primary: colorToPaletteColorOptions("#111"),
         secondary: deepPurple,
         background: {
             default: grey[900],

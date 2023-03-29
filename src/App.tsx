@@ -121,31 +121,37 @@ const App = () => {
     setTheme(event.target.value);
   };
 
-  const handleFilterTechnology = (tech: string) => {
-    if (tech === 'All')
-      setFilteredProjects([...projects]);
-    else
-      setFilteredProjects(
-        projects.filter((project) =>
-          project.technologies?.includes(tech)
-        )
+  const filterTechnologyAndType = (tech: string, type: string) => {
+    if (tech === "All" && type === "All") {
+      return projects;
+    } else if (tech === "All") {
+      return projects.filter((project) => project.types?.includes(type));
+    } else if (type === "All") {
+      return projects.filter((project) =>
+        project.technologies?.includes(tech)
       );
+    } else {
+      return [...projects.filter(
+        (project) =>
+          project.technologies?.includes(tech) &&
+          project.types?.includes(type)
+      )]
+    }
+  }
+
+  const handleFilterTechnology = (tech: string) => {
     setFilterTechnology(tech);
+    setFilteredProjects(filterTechnologyAndType(tech, filterType))
   };
 
   const handleFilterType = (type: string) => {
-    if (type === 'All')
-      setFilteredProjects([...projects]);
-    else
-      setFilteredProjects(
-        projects.filter((project) => project.types?.includes(type))
-      );
     setFilterType(type);
+    setFilteredProjects(filterTechnologyAndType(filterTechnology, type))
   };
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <Box bgcolor={"background.default"} flexGrow={1} height={"100%"}>
+      <Box bgcolor={"background.default"} height={"100%"}>
         <AppBar position="static">
           <Toolbar>
             <Box height={"5rem"} sx={{
@@ -160,52 +166,54 @@ const App = () => {
             </Box>
           </Toolbar>
         </AppBar>
-        <Box sx={{ p: 2 }}>
-          <Box sx={{ display: 'flex', mb: 2 }}>
-            <Typography variant="subtitle1" sx={{ mr: 2 }} color="text.primary">
-              Filter by technology:
-            </Typography>
-            <Box flexWrap={"wrap"}>
-              {Array.from(
-                new Set(
-                  projects
-                    .flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
-                    .map((tech) => tech)
-                )
-              ).map((tech, index) => (
-                <Chip
-                  key={index}
-                  label={tech}
-                  onClick={() => handleFilterTechnology(tech)}
-                  sx={{ mr: 1, mb: 1 }}
-                  color={tech === filterTechnology ? "secondary" : "default"}
-                />
-              ))}
+        <Box bgcolor={"background.default"}>
+          <Box sx={{p:2}} bgcolor={"background.paper"}>
+            <Box sx={{ display: 'flex', mb: 2 }}>
+              <Typography variant="subtitle1" sx={{ mr: 2 }} color="text.primary">
+                Filter by technology:
+              </Typography>
+              <Box flexWrap={"wrap"}>
+                {Array.from(
+                  new Set(
+                    projects
+                      .flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
+                      .map((tech) => tech)
+                  )
+                ).map((tech, index) => (
+                  <Chip
+                    key={index}
+                    label={tech}
+                    onClick={() => handleFilterTechnology(tech)}
+                    sx={{ mr: 1, mb: 1 }}
+                    color={tech === filterTechnology ? "secondary" : "default"}
+                  />
+                ))}
+              </Box>
+            </Box>
+            <Box sx={{ display: 'flex', mb: 2 }}>
+              <Typography variant="subtitle1" sx={{ mr: 2 }} color="text.primary">
+                Filter by type:
+              </Typography>
+              <Box flexWrap={"wrap"}>
+                {Array.from(
+                  new Set(
+                    projects
+                      .flatMap((project) => project.types ? ["All", ...project.types] : [])
+                      .map((type) => type)
+                  )
+                ).map((type, index) => (
+                  <Chip
+                    key={index}
+                    label={type}
+                    onClick={() => handleFilterType(type)}
+                    sx={{ mr: 1, mb: 1 }}
+                    color={type === filterType ? "secondary" : "default"}
+                  />
+                ))}
+              </Box>
             </Box>
           </Box>
-          <Box sx={{ display: 'flex', mb: 2 }}>
-            <Typography variant="subtitle1" sx={{ mr: 2 }} color="text.primary">
-              Filter by type:
-            </Typography>
-            <Box flexWrap={"wrap"}>
-              {Array.from(
-                new Set(
-                  projects
-                    .flatMap((project) => project.types ? ["All", ...project.types] : [])
-                    .map((type) => type)
-                )
-              ).map((type, index) => (
-                <Chip
-                  key={index}
-                  label={type}
-                  onClick={() => handleFilterType(type)}
-                  sx={{ mr: 1, mb: 1 }}
-                  color={type === filterType ? "secondary" : "default"}
-                />
-              ))}
-            </Box>
-          </Box>
-          <Grid container spacing={2}>
+          <Grid sx={{ p: 2 }} container spacing={2} flexGrow={1} bgcolor={"background.default"}>
             {filteredProjects.map((project, index) => (
               <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                 <ProjectCard project={project} />
