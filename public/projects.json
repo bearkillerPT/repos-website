@@ -11,7 +11,21 @@
     "subtitle": {
       "en": "A Modular In-Vehicle C-ITS Architecture for Sensor Data Collection, Vehicular Communications and Cloud Connectivity",
       "pt": "Uma arquitetura C-ITS modular no veículo para coleta de dados de sensores, comunicações veiculares e conectividade em nuvem"
-    }
+    },
+    "technologies": [
+      "C",
+      "C++",
+      "Python",
+      "MQTT",
+      "React Native",
+      "Expo"
+    ],
+    "types": [
+      "Scientific",
+      "Research",
+      "Paper",
+      "Publication"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/HeabooComercial",
@@ -25,7 +39,17 @@
     "subtitle": {
       "en": "ESP32 firmware for a Heaboo,lda project. Creates an access point for Wifi configuration, monitors status and temperatures and sends them to a server.",
       "pt": "Firmware ESP32 para um projeto da Heaboo,lda. Cria um ponto de acesso para configuração de Wifi, monitoriza o estado e as temperaturas e envia-os para um servidor."
-    }
+    },
+    "technologies": [
+      "C",
+      "ESP32",
+      "Arduino",
+      "Node",
+      "Express"
+    ],
+    "types": [
+      "Firmware"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/HeabooComercial",
@@ -39,7 +63,17 @@
     "subtitle": {
       "en": "The Audit Waiting tool analyzes the domestic hot water distribution project and presents the waiting times and waste in each compartment.",
       "pt": "A ferramenta Audit Waiting faz uma análise ao projeto de distribuição de água quente sanitária e apresenta os tempos de espera e desperdício em cada compartimento."
-    }
+    },
+    "technologies": [
+      "Typescript",
+      "React",
+      "Node",
+      "Express",
+      "MySQL"
+    ],
+    "types": [
+      "Freelancer Project"
+    ]
   },
   {
     "repo": "https://github.com/expo/expo/pull/18225",
@@ -53,9 +87,17 @@
     "subtitle": {
       "en": "Implementation in android of the light sensor for Expo-Sensors!",
       "pt": "Implementação em android do sensor de luminusidade para o Expo-Sensors!"
-    }
-  }, 
-   {
+    },
+    "technologies": [
+      "React Native",
+      "Expo",
+      "Android"
+    ],
+    "types": [
+      "Pull Request"
+    ]
+  },
+  {
     "repo": "https://github.com/bearkillerPT/pokeMMOFarmBoye",
     "video": "https://github.com/bearkillerPT/pokeMMOFarmBoye/raw/main/pokemmo8x.mp4",
     "image": null,
@@ -67,9 +109,18 @@
     "subtitle": {
       "en": "Fun project in python3 with openCV, pyautogui and autoit (for mouse events)",
       "pt": "Projeto pequeno em python3 com openCV, pyautogui e autoit (para simular eventos de rato)"
-    }
-  }, 
- {
+    },
+    "technologies": [
+      "Python",
+      "OpenCV",
+      "PyAutoGUI",
+      "AutoIt"
+    ],
+    "types": [
+      "Bot"
+    ]
+  },
+  {
     "repo": "https://github.com/bearkillerPT/metinCV",
     "video": "https://github.com/bearkillerPT/repos-website/raw/main/public/metin.mp4",
     "image": null,
@@ -81,9 +132,18 @@
     "subtitle": {
       "en": "Another fun project in python3 with openCV, pyautogui and autoit (for mouse events)",
       "pt": "Another projeto pequeno em python3 com openCV, pyautogui e autoit (para simular eventos de rato)"
-    }
-  }, 
- {
+    },
+    "technologies": [
+      "Python",
+      "OpenCV",
+      "PyAutoGUI",
+      "AutoIt"
+    ],
+    "types": [
+      "Bot"
+    ]
+  },
+  {
     "repo": "https://github.com/bearkillerPT/CLE",
     "video": null,
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/cle.png",
@@ -95,7 +155,16 @@
     "subtitle": {
       "en": "Gaussian Jordan Elimination performed with pthread, mpich and cuda!",
       "pt": "Eliminação Gaussiana-Jordan com pthread, mpich e cuda!"
-    }
+    },
+    "technologies": [
+      "C",
+      "Pthread",
+      "MPI",
+      "CUDA"
+    ],
+    "types": [
+      "School Project"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/Auchan-CartList",
@@ -109,7 +178,13 @@
     "subtitle": {
       "en": "Chrome Extension to export and import shopping carts!",
       "pt": "Extensão do Chrome para importar e exportar carrinhos de compras!"
-    }
+    },
+    "technologies": [
+      "Javascript"
+    ],
+    "types": [
+      "Chrome Extension"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/DataMining",
@@ -122,7 +197,17 @@
     "subtitle": {
       "en": "Notebook Jupyter, flask api and react web app. 6 Machine learning Algorithm Models!",
       "pt": "Notebook Jupyter, flask api e react web app. 6 Modelos de Algoritmos de Machine Learning!"
-    }
+    },
+    "technologies": [
+      "Python",
+      "Jupyter",
+      "Flask",
+      "React",
+      "Scikit-Learn"
+    ],
+    "types": [
+      "School Project"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/heaboo_log_my_work",
@@ -136,21 +221,15 @@
     "subtitle": {
       "en": "iOS, Android and Web app built with React Native. My first freelancer project!",
       "pt": "Aplicações iOS, Android and Web React Native. Primeiro projeto como freelancer!"
-    }
-  },
-  {
-    "repo": "https://github.com/Unn4m3DD/microsite-pei",
-    "video": "https://raw.githubusercontent.com/Unn4m3DD/microsite-pei/master/demo.mp4",
-    "image": null,
-    "title": {
-      "en": "Website promotion for our C-ITS project",
-      "pt": "Website promoção do nosso projeto em C-ITS"
     },
-    "url": "https://microsite-pei.unn4m3dd.xyz/",
-    "subtitle": {
-      "en": "Website promoting the mobile app and traffic control center.",
-      "pt": "Website para promoção da Aplicação Móvel e Centro de Controlo de Tráfego."
-    }
+    "technologies": [
+      "React Native",
+      "Javascript",
+      "Firebase"
+    ],
+    "types": [
+      "Freelancer Project"
+    ]
   },
   {
     "repo": "https://github.com/Unn4m3DD/symbolearn",
@@ -164,7 +243,15 @@
     "subtitle": {
       "en": "Website to learn and practice symbolic languages.",
       "pt": "Website para aprender e praticar linguagens simbólicas."
-    }
+    },
+    "technologies": [
+      "Angular",
+      "Javascript",
+      "Firebase"
+    ],
+    "types": [
+      "School Project"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/Board-Description-Language_and_ABDL",
@@ -178,7 +265,15 @@
     "subtitle": {
       "en": "One of many BDL and ABDL output examples. Languages created with ANTLR4 and Java!",
       "pt": "Um de vários exemplos de BDL e ABDL disponíveis. Linguagens criadas com ANTLR4 e Java!"
-    }
+    },
+    "technologies": [
+      "Java",
+      "ANTLR4"
+    ],
+    "types": [
+      "School Project",
+      "Compiler"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/App-Or-amentos-Fachada/",
@@ -192,10 +287,16 @@
     "subtitle": {
       "en": "App built with tkinter(Python3) to estimate the number of solar panels, A/C units and heatpump.",
       "pt": "Aplicaçao criada com tkinter(Python3) para criar orçamentos com o número de paines solares, unidades HVAC e bombas de calor."
-    }
-     
+    },
+    "technologies": [
+      "Python",
+      "Tkinter"
+    ],
+    "types": [
+      "Freelancer Project"
+    ]
   },
-    {
+  {
     "repo": "https://github.com/bearkillerPT/IV/tree/main/technical_ceramics",
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/iv.png",
     "url": "https://iv.bearkillerpt.xyz/",
@@ -206,8 +307,15 @@
     "subtitle": {
       "en": "Website built with React to help visualizing manufacturing paramethers and their correlation to efficiency. Graphics built with D3.js!",
       "pt": "Site criado em React para visualizar a relação de parâmetros de produção com o rendimento. Gráficos criados com D3.js!"
-    }
-     
+    },
+    "technologies": [
+      "React",
+      "D3.js",
+      "Javascript"
+    ],
+    "types": [
+      "School Project"
+    ]
   },
   {
     "repo": "https://github.com/bearkillerPT/raspberryConfs/",
@@ -221,6 +329,14 @@
     "subtitle": {
       "en": "Server configs such as Nginx and systemd services",
       "pt": "Configurações de servidor como Nginx e serviços de systemd"
-    }
+    },
+    "technologies": [
+      "Nginx",
+      "Systemd",
+      "Bash"
+    ],
+    "types": [
+      "Server Configurations"
+    ]
   }
 ]
