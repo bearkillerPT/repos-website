@@ -1,7 +1,7 @@
 import { PaletteColorOptions, createTheme } from '@mui/material/styles';
-import { deepPurple, blueGrey, grey} from '@mui/material/colors';
+import { deepPurple, blueGrey, grey } from '@mui/material/colors';
 
-const colorToPaletteColorOptions = (color: string) => {
+export const colorToPaletteColorOptions = (color: string) => {
     return {
         main: color,
     } as PaletteColorOptions;

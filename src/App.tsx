@@ -14,12 +14,16 @@ import {
   Tooltip,
   Chip,
   ThemeProvider,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Project_t } from "./Types";
 import { languages } from './languages';
 import { darkTheme, lightTheme } from "./themes";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const ProjectCard = ({ project }: { project: Project_t }) => {
   const { image, video, url, title, subtitle, types, technologies, repo } =
@@ -167,50 +171,77 @@ const App = () => {
           </Toolbar>
         </AppBar>
         <Box bgcolor={"background.default"}>
-          <Box sx={{p:2}} bgcolor={"background.paper"}>
-            <Box sx={{ display: 'flex', mb: 2 }}>
-              <Typography variant="subtitle1" sx={{ mr: 2 }} color="text.primary">
+          <Box bgcolor={"background.paper"}>
+            <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
+              <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
                 Filter by technology:
               </Typography>
-              <Box flexWrap={"wrap"}>
-                {Array.from(
-                  new Set(
-                    projects
-                      .flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
-                      .map((tech) => tech)
-                  )
-                ).map((tech, index) => (
-                  <Chip
-                    key={index}
-                    label={tech}
-                    onClick={() => handleFilterTechnology(tech)}
-                    sx={{ mr: 1, mb: 1 }}
-                    color={tech === filterTechnology ? "secondary" : "default"}
-                  />
-                ))}
-              </Box>
+              <Accordion sx={{width: "100%"}}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon style={{
+                    color: theme === 'light' ? 'black' : 'white'
+                   }}/>}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>Show all</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {Array.from(
+                    new Set(
+                      projects
+                        .flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
+                        .map((tech) => tech)
+                    )
+                  ).map((tech, index) => (
+                    <Chip
+                      key={index}
+                      label={tech}
+                      onClick={() => handleFilterTechnology(tech)}
+                      sx={{ mr: 1, mb: 1 }}
+                      color={tech === filterTechnology ? "secondary" : "default"}
+                    />
+                  ))}
+                </AccordionDetails>
+              </Accordion>
             </Box>
-            <Box sx={{ display: 'flex', mb: 2 }}>
-              <Typography variant="subtitle1" sx={{ mr: 2 }} color="text.primary">
+            <Box sx={{
+              width: "100%",
+              height: "5px",
+              backgroundColor: theme === 'light' ? 'white' : 'black',
+              
+            }}/>
+            <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
+              <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
                 Filter by type:
               </Typography>
-              <Box flexWrap={"wrap"}>
-                {Array.from(
-                  new Set(
-                    projects
-                      .flatMap((project) => project.types ? ["All", ...project.types] : [])
-                      .map((type) => type)
-                  )
-                ).map((type, index) => (
-                  <Chip
-                    key={index}
-                    label={type}
-                    onClick={() => handleFilterType(type)}
-                    sx={{ mr: 1, mb: 1 }}
-                    color={type === filterType ? "secondary" : "default"}
-                  />
-                ))}
-              </Box>
+              <Accordion sx={{width: "100%"}}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon style={{
+                    color: theme === 'light' ? 'black' : 'white'
+                   }}/>}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header">
+                  <Typography>Show all</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {Array.from(
+                    new Set(
+                      projects
+                        .flatMap((project) => project.types ? ["All", ...project.types] : [])
+                        .map((type) => type)
+                    )
+                  ).map((type, index) => (
+                    <Chip
+                      key={index}
+                      label={type}
+                      onClick={() => handleFilterType(type)}
+                      sx={{ mr: 1, mb: 1 }}
+                      color={type === filterType ? "secondary" : "default"}
+                    />
+                  ))}
+                </AccordionDetails>
+              </Accordion>
             </Box>
           </Box>
           <Grid sx={{ p: 2 }} container spacing={2} flexGrow={1} bgcolor={"background.default"}>
