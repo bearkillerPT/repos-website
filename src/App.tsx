@@ -25,7 +25,7 @@ import { languages } from './languages';
 import { darkTheme, lightTheme } from "./themes";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const ProjectCard = ({ project }: { project: Project_t }) => {
+const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) => {
   const { image, video, url, title, subtitle, types, technologies, repo } =
     project;
 
@@ -72,10 +72,11 @@ const ProjectCard = ({ project }: { project: Project_t }) => {
               href={url}
               target="_blank"
               size="small"
-              color="primary"
+              color="secondaryButton"
               variant="contained"
               sx={{
-                ml: 1,
+                mr: 1,
+                color: "white",
               }}
             >
               Visit Website
@@ -87,10 +88,10 @@ const ProjectCard = ({ project }: { project: Project_t }) => {
                 href={repo}
                 target="_blank"
                 size="large"
-                color="primary"
+                color="secondaryButton"
                 sx={{ ml: 1 }}
               >
-                <GitHubIcon />
+                <GitHubIcon sx={{ width: "2rem", height: "2rem"}}/>
               </IconButton>
             </Tooltip>
           )}
@@ -208,7 +209,7 @@ const App = () => {
             <Box sx={{
               width: "100%",
               height: "5px",
-              backgroundColor: theme === 'light' ? 'white' : 'black',
+              backgroundColor: 'background.default',
               
             }}/>
             <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
@@ -247,7 +248,7 @@ const App = () => {
           <Grid sx={{ p: 2 }} container spacing={2} flexGrow={1} bgcolor={"background.default"}>
             {filteredProjects.map((project, index) => (
               <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} theme={theme}/>
               </Grid>
             ))}
           </Grid>
