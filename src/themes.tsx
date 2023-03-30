@@ -25,7 +25,7 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
     palette: {
         primary: colorToPaletteColorOptions(deepPurple[700]),
-        secondary: colorToPaletteColorOptions(deepPurple[900]),
+        secondary: colorToPaletteColorOptions(indigo[400]),
         secondaryButton: colorToPaletteColorOptions(indigo[400]),
         background: {
             default: grey[900],
@@ -57,4 +57,3 @@ declare module "@mui/material/Button" {
         secondaryButton: true;
     }
 }
-
