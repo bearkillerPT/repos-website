@@ -48,15 +48,28 @@ const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) 
         <Typography variant="body2" color="text.primary">
           {subtitle.en}
         </Typography>
-        <Typography
-          variant="body2" color="text.primary">
-          {technologies?.sort().join(', ')}
-        </Typography>
-
-        <Typography
-          variant="body2" color="text.primary">
-          {types?.sort().join(', ')}
-        </Typography>
+        <Box sx={{py: 2}}>
+          <Box>
+            {types?.sort().map((type, index) => (
+              <Chip
+                key={index}
+                label={type}
+                sx={{ mr: 1, mb: 1 }}
+                color={"secondary"}
+              />
+            ))}
+          </Box>
+          <Box>
+            {technologies?.sort().map((tech, index) => (
+              <Chip
+                key={index}
+                label={tech}
+                sx={{ mr: 1, mb: 1 }}
+                color={"default"}
+              />
+            ))}
+          </Box>
+        </Box>
       </CardContent>
       <CardActions
         sx={{
@@ -91,7 +104,7 @@ const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) 
                 color="secondaryButton"
                 sx={{ ml: 1 }}
               >
-                <GitHubIcon sx={{ width: "2rem", height: "2rem"}}/>
+                <GitHubIcon sx={{ width: "2rem", height: "2rem" }} />
               </IconButton>
             </Tooltip>
           )}
@@ -177,11 +190,11 @@ const App = () => {
               <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
                 Filter by technology:
               </Typography>
-              <Accordion sx={{width: "100%"}}>
+              <Accordion sx={{ width: "100%" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon style={{
                     color: theme === 'light' ? 'black' : 'white'
-                   }}/>}
+                  }} />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
@@ -210,17 +223,17 @@ const App = () => {
               width: "100%",
               height: "5px",
               backgroundColor: 'background.default',
-              
-            }}/>
+
+            }} />
             <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
               <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
                 Filter by type:
               </Typography>
-              <Accordion sx={{width: "100%"}}>
+              <Accordion sx={{ width: "100%" }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon style={{
                     color: theme === 'light' ? 'black' : 'white'
-                   }}/>}
+                  }} />}
                   aria-controls="panel1a-content"
                   id="panel1a-header">
                   <Typography>Show all</Typography>
@@ -248,7 +261,7 @@ const App = () => {
           <Grid sx={{ p: 2 }} container spacing={2} flexGrow={1} bgcolor={"background.default"}>
             {filteredProjects.map((project, index) => (
               <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                <ProjectCard project={project} theme={theme}/>
+                <ProjectCard project={project} theme={theme} />
               </Grid>
             ))}
           </Grid>
