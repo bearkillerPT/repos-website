@@ -46,7 +46,11 @@ const ProjectCard = ({ project,
       sx={{ position: "relative", height: "100%" }}
     >
       {video && (
-        <CardMedia component={"video"} src={video} height="200" />
+         <video loop autoPlay muted controls style={{
+          height: "200px",
+         }}>
+         <source src={video} type="video/mp4" />
+       </video>
       )}
       {image && (
         <CardMedia component={"img"} src={image} height="200" />
