@@ -40,17 +40,16 @@ const ProjectCard = ({ project,
   }) => {
   const { image, video, url, title, subtitle, types, technologies, repo } =
     project;
-  console.log(language);
   return (
     <Card
       sx={{ position: "relative", height: "100%" }}
     >
       {video && (
-         <video loop autoPlay muted controls style={{
+        <video loop autoPlay muted controls style={{
           height: "200px",
-         }}>
-         <source src={video} type="video/mp4" />
-       </video>
+        }}>
+          <source src={video} type="video/mp4" />
+        </video>
       )}
       {image && (
         <CardMedia component={"img"} src={image} height="200" />
@@ -66,7 +65,7 @@ const ProjectCard = ({ project,
         </Typography>
         <Box sx={{ py: 2 }}>
           <Box>
-            {types?.sort().map((type, index) => (
+            {types?.filter((type)=>type!=="All").sort().map((type, index) => (
               <Chip
                 key={index}
                 label={type}
@@ -76,7 +75,7 @@ const ProjectCard = ({ project,
             ))}
           </Box>
           <Box>
-            {technologies?.sort().map((tech, index) => (
+            {technologies?.filter((tech)=>tech!=="All").sort().map((tech, index) => (
               <Chip
                 key={index}
                 label={tech}
@@ -144,6 +143,15 @@ const App = () => {
     fetch('https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/projects.json')
       .then((res) => res.json())
       .then((res) => {
+        // Set the type of the technologies and types to include All
+        res.forEach((project: Project_t) => {
+          if (!project.technologies) project.technologies = [];
+          if (!project.types) project.types = [];
+          if (!project.technologies.includes("All"))
+            project.technologies?.push("All");
+          if (!project.types.includes("All"))
+            project.types?.push("All");
+        })
         setProjects(res);
         setFilteredProjects(res);
       })
@@ -333,12 +341,15 @@ const App = () => {
                     new Set(
                       projects
                         .flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
+                        .sort((tech1, tech2) =>
+                          projects.filter((project) => project.technologies?.includes(tech1)).length - projects.filter((project) => project.technologies?.includes(tech2)).length)
+                        .reverse()
                         .map((tech) => tech)
                     )
                   ).map((tech, index) => (
                     <Chip
                       key={index}
-                      label={tech}
+                      label={tech + " (" + projects.filter((project) => project.technologies?.includes(tech)).length + ")"}
                       onClick={() => handleFilterTechnology(tech)}
                       sx={{ mr: 1, mb: 1 }}
                       color={tech === filterTechnology ? "secondary" : "default"}
@@ -373,12 +384,15 @@ const App = () => {
                     new Set(
                       projects
                         .flatMap((project) => project.types ? ["All", ...project.types] : [])
+                        .sort((type1, type2) =>
+                          projects.filter((project) => project.types?.includes(type1)).length - projects.filter((project) => project.types?.includes(type2)).length)
+                        .reverse()
                         .map((type) => type)
                     )
                   ).map((type, index) => (
                     <Chip
                       key={index}
-                      label={type}
+                      label={type + " (" + projects.filter((project) => project.types?.includes(type)).length + ")"}
                       onClick={() => handleFilterType(type)}
                       sx={{ mr: 1, mb: 1 }}
                       color={type === filterType ? "secondary" : "default"}
