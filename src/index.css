@@ -17,3 +17,6 @@ code {
 #root {
   height: 100%;
 }
+.MuiCardMedia-root .MuiCardMedia-media .MuiCardMedia-img {
+  margin: 0
+}

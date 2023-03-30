@@ -23,9 +23,15 @@ export const languages = {
       pt: "*Este projeto está no github de um amigo!"
     },
   },
+  curriculum: {
+    download: {
+      en: "Download PDF",
+      pt: "Descarregar PDF"
+    }
+  },
   aboutMeLeft: {
-    en: "Hey! I'm a portuguese developer with a degree in Computer and Informatic Engineering from Universidade de Aveiro! I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project. The website is currently being hosted on a raspberry 2b with Nginx!",
-    pt: "Olá! Eu sou um programador português com um curso em Engenharia de Computadores e informática pela Universidade de Aveiro! Contruí este website para expor algum do meu trabalho. Cada projeto tem o link para o repositório e, na maioria dos casos, link para um website de demonstração. Este website está hospedado no meu Raspberry 2b com Nginx!"
+    en: "Hey! I'm a portuguese developer with a degree in Computer and Te lematics Engineering from Universidade de Aveiro! I built this website with react in order to expose a bit of my work. You can find links for both live website and github repos next to each project. The website is currently being hosted on a raspberry 4B although it started on a 2B Using Nginx!",
+    pt: "Olá! Eu sou um programador português com um curso em Engenharia de Computadores e informática pela Universidade de Aveiro! Contruí este website para expor algum do meu trabalho. Cada projeto tem o link para o repositório e, na maioria dos casos, link para um website de demonstração. Este website está hospedado no meu Raspberry 4B embora tenha começado num 2b com Nginx!"
   },
   checkCurriculum: {
     en: "Check out my Curriculum Vitae:",

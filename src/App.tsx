@@ -21,6 +21,7 @@ import {
   FormControl,
   Select,
   MenuItem,
+  CardActionArea,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Project_t, language_t } from "./Types";
@@ -28,6 +29,7 @@ import { languages } from './languages';
 import { darkTheme, lightTheme } from "./themes";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Lightbulb } from "@mui/icons-material";
+import { grey, indigo } from "@mui/material/colors";
 
 const ProjectCard = ({ project,
   theme,
@@ -194,7 +196,7 @@ const App = () => {
                 BearkillerPT
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-                <Lightbulb/>
+                <Lightbulb />
                 <FormControl>
                   <Select
                     value={theme}
@@ -222,7 +224,6 @@ const App = () => {
                     <MenuItem value={"dark"} sx={{}}>{languages.themes.dark[language]}</MenuItem>
                   </Select>
                 </FormControl>
-
                 <FormControl sx={{ mr: 2 }}>
                   <Select
                     value={language}
@@ -254,6 +255,58 @@ const App = () => {
           </Toolbar>
         </AppBar>
         <Box bgcolor={"background.default"}>
+          <Box p={2} bgcolor={"background.paper"} display={"flex"} flexDirection={"row"} flexWrap={"wrap"} alignContent={"center"} justifyContent={"center"}>
+            <Box >
+              <Box
+                component="img"
+                sx={{
+                  height: 233,
+                  maxHeight: { xs: 233, md: 167 },
+                }}
+                alt="The house from the offer."
+                src="https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/meImg.png"
+              />
+
+              <Typography variant="subtitle1" fontWeight={"bold"} color="text.primary" sx={{ marginBottom: 1 }}>
+                Gil Teixeira
+              </Typography>
+            </Box>
+            <Box sx={{
+              display: "flex",
+              flexDirection: "column",
+              marginLeft: 2,
+              maxWidth: '100rem',
+              height: 'auto',
+            }}>
+              <Typography variant="subtitle1" color="text.primary" p={2} sx={{
+                marginBottom: 1,
+                backgroundColor: grey[theme === 'light' ? 300 : 700]
+              }}>
+                {languages.aboutMeLeft[language]} {languages.aboutMeRight[language]}
+              </Typography>
+              <Typography variant="subtitle1" color="text.primary" p={2} sx={{
+                marginBottom: 1,
+                backgroundColor: grey[theme === 'light' ? 300 : 700]
+              }}>
+                {languages.checkCurriculum[language]}
+              </Typography>
+              <Button
+                variant="contained"
+                color="secondaryButton"
+                href="https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/Curriculo.pdf"
+                target="_blank"
+                sx={{
+                  color: 'white',
+                  '&:hover': {
+                    backgroundColor: indigo[700],
+                    color: 'white',
+                  },
+                }}>
+                {languages.curriculum.download[language]}
+              </Button>
+            </Box>
+          </Box>
+
           <Box bgcolor={"background.paper"}>
             <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
               <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
