@@ -17,12 +17,17 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Menu,
+  FormControl,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Project_t, language_t } from "./Types";
 import { languages } from './languages';
 import { darkTheme, lightTheme } from "./themes";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Lightbulb } from "@mui/icons-material";
 
 const ProjectCard = ({ project,
   theme,
@@ -123,7 +128,7 @@ const ProjectCard = ({ project,
 const App = () => {
   const [projects, setProjects] = useState<Project_t[]>([])
   const [language, setLanguage] = useState<"pt" | "en">("en");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [filteredProjects, setFilteredProjects] = useState<Project_t[]>(projects);
   const [filterTechnology, setFilterTechnology] = useState("All");
   const [filterType, setFilterType] = useState("All");
@@ -183,10 +188,68 @@ const App = () => {
               flexGrow: 1,
               justifyContent: 'center',
               alignItems: 'center',
+              flexDirection: 'row',
             }}>
               <Typography variant="h6" fontWeight={'bold'} textAlign={"center"} sx={{ flexGrow: 1 }}>
                 BearkillerPT
               </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+                <Lightbulb/>
+                <FormControl>
+                  <Select
+                    value={theme}
+                    onChange={handleThemeChange}
+                    inputProps={{ 'aria-label': 'Without label' }}
+                    MenuProps={{
+                      sx: {
+                        "&& .Mui-selected": {
+                          backgroundColor: "primary"
+                        },
+                        "&& .MuiPaper-root": {
+                          backgroundColor: "primary",
+                        },
+                      }
+                    }}
+                    sx={{
+                      color: "white",
+                      '.MuiSvgIcon-root ': {
+                        fill: "white !important",
+                      }
+                    }}
+                  >
+                    <MenuItem value={"light"} sx={{}}>{languages.themes.light[language]}</MenuItem>
+                    <Box sx={{ py: .2 }}></Box>
+                    <MenuItem value={"dark"} sx={{}}>{languages.themes.dark[language]}</MenuItem>
+                  </Select>
+                </FormControl>
+
+                <FormControl sx={{ mr: 2 }}>
+                  <Select
+                    value={language}
+                    onChange={handleLanguageChange}
+                    inputProps={{ 'aria-label': 'Without label' }}
+                    MenuProps={{
+                      sx: {
+                        "&& .Mui-selected": {
+                          backgroundColor: "primary"
+                        },
+                        "&& .MuiPaper-root": {
+                          backgroundColor: "primary",
+                        },
+                      }
+                    }}
+                    sx={{
+                      color: "white",
+                      '.MuiSvgIcon-root ': {
+                        fill: "white !important",
+                      }
+                    }}
+                  > <MenuItem value={"en"} sx={{}}>{languages.languages.english[language]}</MenuItem>
+                    <Box sx={{ py: .2 }}></Box>
+                    <MenuItem value={"pt"} sx={{}}>{languages.languages.portuguese[language]}</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
             </Box>
           </Toolbar>
         </AppBar>
@@ -237,9 +300,9 @@ const App = () => {
               <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
                 {languages.filters[language] + languages.filters.type[language]}:
               </Typography>
-              <Accordion 
-              sx={{ width: "100%" }}
-              onChange={()=>setTypeFilterExpanded(!typeFilterExpanded)}>
+              <Accordion
+                sx={{ width: "100%" }}
+                onChange={() => setTypeFilterExpanded(!typeFilterExpanded)}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon style={{
                     color: theme === 'light' ? 'black' : 'white'

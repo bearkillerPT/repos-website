@@ -54,5 +54,15 @@ export const languages = {
       en: "Hide All",
       pt: "Esconder Todos"
     }
+  },
+  themes: {
+    light: {
+      en: "Light",
+      pt: "Claro"
+    },
+    dark: {
+      en: "Dark",
+      pt: "Escuro"
+    },
   }
 }
