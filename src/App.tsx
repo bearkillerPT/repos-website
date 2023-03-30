@@ -286,7 +286,6 @@ const App = () => {
             <Box sx={{
               display: "flex",
               flexDirection: "column",
-              marginLeft: 2,
               maxWidth: '100rem',
               height: 'auto',
             }}>
@@ -307,6 +306,7 @@ const App = () => {
                 color="secondaryButton"
                 href="https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/Curriculo.pdf"
                 target="_blank"
+                autoCapitalize="none"
                 sx={{
                   color: 'white',
                   '&:hover': {

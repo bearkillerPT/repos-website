@@ -8,6 +8,11 @@ export const colorToPaletteColorOptions = (color: string) => {
 };
 
 export const lightTheme = createTheme({
+    typography: {
+        button: {
+            textTransform: 'none'
+        }
+    },
     palette: {
         primary: colorToPaletteColorOptions(indigo[400]),
         secondary: colorToPaletteColorOptions(indigo[500]),
@@ -23,6 +28,11 @@ export const lightTheme = createTheme({
 });
 
 export const darkTheme = createTheme({
+    typography: {
+        button: {
+            textTransform: 'none'
+        }
+    },
     palette: {
         primary: colorToPaletteColorOptions(deepPurple[700]),
         secondary: colorToPaletteColorOptions(indigo[400]),
