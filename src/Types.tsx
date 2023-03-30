@@ -1,6 +1,6 @@
 export interface Project_t {
-    title: Translation;
-    subtitle: Translation;
+    title: Translation_t;
+    subtitle: Translation_t;
     repo: string | undefined;
     url: string | undefined;
     image: string | undefined;
@@ -9,7 +9,9 @@ export interface Project_t {
     technologies: string[] | undefined;
 }
 
-interface Translation {
+export type language_t = "pt" | "en"
+
+interface Translation_t {
     en: string;
     pt: string;
 }

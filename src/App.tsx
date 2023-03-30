@@ -18,17 +18,22 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { Project_t } from "./Types";
+import { Project_t, language_t } from "./Types";
 import { languages } from './languages';
 import { darkTheme, lightTheme } from "./themes";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) => {
+const ProjectCard = ({ project,
+  theme,
+  language }: {
+    project: Project_t,
+    theme: string,
+    language: language_t
+  }) => {
   const { image, video, url, title, subtitle, types, technologies, repo } =
     project;
-
+  console.log(language);
   return (
     <Card
       sx={{ position: "relative", height: "100%" }}
@@ -43,12 +48,12 @@ const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) 
         paddingBottom: 5,
       }}>
         <Typography gutterBottom fontWeight="bold" variant="h5" component="div" color="text.primary">
-          {title.en}
+          {title[language]}
         </Typography>
         <Typography variant="body2" color="text.primary">
-          {subtitle.en}
+          {subtitle[language]}
         </Typography>
-        <Box sx={{py: 2}}>
+        <Box sx={{ py: 2 }}>
           <Box>
             {types?.sort().map((type, index) => (
               <Chip
@@ -92,7 +97,7 @@ const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) 
                 color: "white",
               }}
             >
-              Visit Website
+              {languages.project.websiteButton[language]}
             </Button>
           )}
           {repo && (
@@ -117,12 +122,13 @@ const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) 
 
 const App = () => {
   const [projects, setProjects] = useState<Project_t[]>([])
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState<"pt" | "en">("en");
   const [theme, setTheme] = useState("light");
   const [filteredProjects, setFilteredProjects] = useState<Project_t[]>(projects);
   const [filterTechnology, setFilterTechnology] = useState("All");
   const [filterType, setFilterType] = useState("All");
-
+  const [techFilterExpanded, setTechFilterExpanded] = useState(false);
+  const [typeFilterExpanded, setTypeFilterExpanded] = useState(false);
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/projects.json')
       .then((res) => res.json())
@@ -188,9 +194,11 @@ const App = () => {
           <Box bgcolor={"background.paper"}>
             <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
               <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
-                Filter by technology:
+                {languages.filters[language] + languages.filters.tech[language]}:
               </Typography>
-              <Accordion sx={{ width: "100%" }}>
+              <Accordion
+                sx={{ width: "100%" }}
+                onChange={() => { setTechFilterExpanded(!techFilterExpanded) }}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon style={{
                     color: theme === 'light' ? 'black' : 'white'
@@ -198,7 +206,7 @@ const App = () => {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  <Typography>Show all</Typography>
+                  <Typography>{techFilterExpanded ? languages.filters.hide_all[language] : languages.filters.show_all[language]}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   {Array.from(
@@ -227,16 +235,18 @@ const App = () => {
             }} />
             <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
               <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
-                Filter by type:
+                {languages.filters[language] + languages.filters.type[language]}:
               </Typography>
-              <Accordion sx={{ width: "100%" }}>
+              <Accordion 
+              sx={{ width: "100%" }}
+              onChange={()=>setTypeFilterExpanded(!typeFilterExpanded)}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon style={{
                     color: theme === 'light' ? 'black' : 'white'
                   }} />}
                   aria-controls="panel1a-content"
                   id="panel1a-header">
-                  <Typography>Show all</Typography>
+                  <Typography>{typeFilterExpanded ? languages.filters.hide_all[language] : languages.filters.show_all[language]}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   {Array.from(
@@ -261,7 +271,7 @@ const App = () => {
           <Grid sx={{ p: 2 }} container spacing={2} flexGrow={1} bgcolor={"background.default"}>
             {filteredProjects.map((project, index) => (
               <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                <ProjectCard project={project} theme={theme} />
+                <ProjectCard project={project} theme={theme} language={language} />
               </Grid>
             ))}
           </Grid>

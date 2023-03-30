@@ -34,5 +34,25 @@ export const languages = {
   aboutMeRight: {
     en: "I'm currently working at a Research Grant at Instituto de Telecomunicações in the embedded systems group! Visit my github account to have a look at some of the technologies and concepts I've learned!",
     pt: "Neste momento estou a trabalhar numa bolsa de investigação no Institutode Telecomunicações no grupo de sistemas embutidos! Visite a minha conta no github para ver mais projetos, tecnologias e conceitos que aprendi!"
+  },
+  filters: {
+    en: "Filter by ",
+    pt: "Filtrar por ",
+    tech: {
+      en: "Technology",
+      pt: "Tecnologia"
+    },
+    type: {
+      en: "Type",
+      pt: "Tipo"
+    },
+    show_all: {
+      en: "Show All",
+      pt: "Mostrar Todos"
+    },
+    hide_all: {
+      en: "Hide All",
+      pt: "Esconder Todos"
+    }
   }
 }
