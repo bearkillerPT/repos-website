@@ -42,7 +42,7 @@ const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) 
       <CardContent sx={{
         paddingBottom: 5,
       }}>
-        <Typography gutterBottom variant="h5" component="div" color="text.primary">
+        <Typography gutterBottom fontWeight="bold" variant="h5" component="div" color="text.primary">
           {title.en}
         </Typography>
         <Typography variant="body2" color="text.primary">
@@ -118,7 +118,7 @@ const ProjectCard = ({ project, theme }: { project: Project_t, theme: string }) 
 const App = () => {
   const [projects, setProjects] = useState<Project_t[]>([])
   const [language, setLanguage] = useState("en");
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [filteredProjects, setFilteredProjects] = useState<Project_t[]>(projects);
   const [filterTechnology, setFilterTechnology] = useState("All");
   const [filterType, setFilterType] = useState("All");

@@ -10,7 +10,7 @@ export const colorToPaletteColorOptions = (color: string) => {
 export const lightTheme = createTheme({
     palette: {
         primary: colorToPaletteColorOptions(indigo[400]),
-        secondary: deepPurple,
+        secondary: colorToPaletteColorOptions(indigo[500]),
         secondaryButton: colorToPaletteColorOptions(indigo[500]),
         background: {
             default: grey[600],
@@ -24,8 +24,8 @@ export const lightTheme = createTheme({
 
 export const darkTheme = createTheme({
     palette: {
-        primary: colorToPaletteColorOptions(grey[700]),
-        secondary: deepPurple,
+        primary: colorToPaletteColorOptions(deepPurple[700]),
+        secondary: colorToPaletteColorOptions(deepPurple[900]),
         secondaryButton: colorToPaletteColorOptions(indigo[400]),
         background: {
             default: grey[900],
