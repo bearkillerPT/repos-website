@@ -374,10 +374,8 @@ const App = () => {
                     new Set(
                       projects
                         .flatMap((project) => project.technologies ?? [])
-                        .sort((tech1, tech2) =>
-                          projects.filter((project) => project.technologies?.includes(tech1)).length - projects.filter((project) => project.technologies?.includes(tech2)).length)
+                        .sort((tech1, tech2) => projects.filter((project) => project.technologies?.includes(tech1)).length - projects.filter((project) => project.technologies?.includes(tech2)).length)
                         .reverse()
-                        .map((tech) => tech)
                     )
                   ).map((tech, index) => (
                     <Chip
