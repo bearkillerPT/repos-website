@@ -21,8 +21,7 @@
       "Expo"
     ],
     "types": [
-      "Research",
-      "Paper"
+      "Research", "Paper"
     ]
   },
   {
@@ -40,6 +39,7 @@
     },
     "technologies": [
       "C",
+      "C++",
       "ESP32",
       "Arduino",
       "Node",
@@ -113,7 +113,8 @@
       "Python",
       "OpenCV",
       "PyAutoGUI",
-      "AutoIt"
+      "AutoIt",
+      "Pytesseract"
     ],
     "types": [
       "Bot"
@@ -136,6 +137,7 @@
       "Python",
       "OpenCV",
       "PyAutoGUI",
+      "PyDirectInput",
       "AutoIt"
     ],
     "types": [
@@ -202,6 +204,7 @@
       "Jupyter",
       "Flask",
       "React",
+      "Javacript",
       "Scikit-Learn"
     ],
     "types": [
@@ -224,6 +227,7 @@
     "technologies": [
       "React Native",
       "Javascript",
+      "Typescript",
       "Firebase"
     ],
     "types": [
@@ -267,7 +271,8 @@
     },
     "technologies": [
       "Java",
-      "ANTLR4"
+      "ANTLR4",
+      "Javascript"
     ],
     "types": [
       "School Project",
@@ -332,6 +337,7 @@
     "technologies": [
       "Nginx",
       "Systemd",
+      "Fail2ban",
       "Bash"
     ],
     "types": [

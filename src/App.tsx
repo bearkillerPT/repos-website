@@ -65,7 +65,7 @@ const ProjectCard = ({ project,
         </Typography>
         <Box sx={{ py: 2 }}>
           <Box>
-            {types?.filter((type)=>type!=="All").sort().map((type, index) => (
+            {types?.filter((type) => type !== "All").sort().map((type, index) => (
               <Chip
                 key={index}
                 label={type}
@@ -75,7 +75,7 @@ const ProjectCard = ({ project,
             ))}
           </Box>
           <Box>
-            {technologies?.filter((tech)=>tech!=="All").sort().map((tech, index) => (
+            {technologies?.filter((tech) => tech !== "All").sort().map((tech, index) => (
               <Chip
                 key={index}
                 label={tech}
@@ -144,13 +144,46 @@ const App = () => {
       .then((res) => res.json())
       .then((res) => {
         // Set the type of the technologies and types to include All
+        const technologies = projects.flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
+        const types = projects.flatMap((project) => project.types ? ["All", ...project.types] : [])
+        const technologiesSet = Array.from(new Set(technologies));
+        const typesSet = Array.from(new Set(types));
+        const uniqueTechnologies = technologiesSet.filter((tech) => {
+          let count = 0;
+          technologies.forEach((tech2) => {
+            if (tech === tech2) count++;
+          });
+          console.log(count, tech)
+          return count === 1;
+        });
+        const uniqueTypes = typesSet.filter((type) => {
+          let count = 0;
+          types.forEach((type2) => {
+            if (type === type2) count++;
+          }
+          );
+          return count === 1;
+        });
         res.forEach((project: Project_t) => {
           if (!project.technologies) project.technologies = [];
           if (!project.types) project.types = [];
-          if (!project.technologies.includes("All"))
-            project.technologies?.push("All");
-          if (!project.types.includes("All"))
-            project.types?.push("All");
+          let isolatedTechnologies = project.technologies?.filter((tech) => uniqueTechnologies.includes(tech));
+          let isolatedTypes = project.types?.filter((type) => uniqueTypes.includes(type));
+          if (isolatedTechnologies.length > 1) {
+            // Remove the isolated technologies from the project's technologies
+            project.technologies = project.technologies?.filter((tech) => !isolatedTechnologies.includes(tech));
+            // Add the isolated technologies to the project's technologies
+            project.technologies = [isolatedTechnologies.join(', '), ...project.technologies ?? []];
+          }
+          if (isolatedTypes.length > 1) {
+            // Remove the isolated types from the project's types
+            project.types = project.types?.filter((type) => !isolatedTypes.includes(type));
+            // Add the isolated types to the project's types
+            project.types = [isolatedTypes.join(', '), ...project.types ?? []];
+          }
+
+          project.technologies?.push("All");
+          project.types?.push("All");
         })
         setProjects(res);
         setFilteredProjects(res);
@@ -286,7 +319,7 @@ const App = () => {
             <Box sx={{
               display: "flex",
               flexDirection: "column",
-              maxWidth: '100rem',
+              maxWidth: '90rem',
               height: 'auto',
             }}>
               <Typography variant="subtitle1" color="text.primary" p={2} sx={{
@@ -340,7 +373,7 @@ const App = () => {
                   {Array.from(
                     new Set(
                       projects
-                        .flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
+                        .flatMap((project) => project.technologies ?? [])
                         .sort((tech1, tech2) =>
                           projects.filter((project) => project.technologies?.includes(tech1)).length - projects.filter((project) => project.technologies?.includes(tech2)).length)
                         .reverse()
