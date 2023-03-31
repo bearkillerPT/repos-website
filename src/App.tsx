@@ -40,6 +40,23 @@ const ProjectCard = ({ project,
   }) => {
   const { image, video, url, title, subtitle, types, technologies, repo } =
     project;
+  // if a technology is of type "tech1, tech2, ..." then it will be split into an array of tech1, tech2, ... 
+  // and the original technology will not be included
+  // and withouth changing the original array
+  const splitTags = (technologies: string[]) => {
+    const newTechnologies = [...technologies];
+    technologies.forEach((tech, index) => {
+      if (tech.includes(",")) {
+        const splittedTech = tech.split(",");
+        newTechnologies.splice(index, 1, ...splittedTech);
+      }
+    });
+    return newTechnologies;
+  };
+  const technologiesArray = splitTags(technologies || []);
+  const typesArray = splitTags(types || []);
+  
+
   return (
     <Card
       sx={{ position: "relative", height: "100%" }}
@@ -65,7 +82,7 @@ const ProjectCard = ({ project,
         </Typography>
         <Box sx={{ py: 2 }}>
           <Box>
-            {types?.filter((type) => type !== "All").sort().map((type, index) => (
+            {typesArray?.filter((type) => type !== "All").sort().map((type, index) => (
               <Chip
                 key={index}
                 label={type}
@@ -75,7 +92,7 @@ const ProjectCard = ({ project,
             ))}
           </Box>
           <Box>
-            {technologies?.filter((tech) => tech !== "All").sort().map((tech, index) => (
+            {technologiesArray?.filter((tech) => tech !== "All").sort().map((tech, index) => (
               <Chip
                 key={index}
                 label={tech}
@@ -142,10 +159,10 @@ const App = () => {
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/projects.json')
       .then((res) => res.json())
-      .then((res) => {
+      .then((res: Project_t[]) => {
         // Set the type of the technologies and types to include All
-        const technologies = projects.flatMap((project) => project.technologies ? ["All", ...project.technologies] : [])
-        const types = projects.flatMap((project) => project.types ? ["All", ...project.types] : [])
+        const technologies = res.flatMap((project) => project.technologies ? ["All", ...project.technologies] : ["All"])
+        const types = res.flatMap((project) => project.types ? ["All", ...project.types] : ["All"])
         const technologiesSet = Array.from(new Set(technologies));
         const typesSet = Array.from(new Set(types));
         const uniqueTechnologies = technologiesSet.filter((tech) => {
@@ -153,7 +170,6 @@ const App = () => {
           technologies.forEach((tech2) => {
             if (tech === tech2) count++;
           });
-          console.log(count, tech)
           return count === 1;
         });
         const uniqueTypes = typesSet.filter((type) => {
