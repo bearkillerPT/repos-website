@@ -388,7 +388,7 @@ const App = () => {
                 <AccordionDetails>
                   {Array.from(
                     new Set(
-                      projects
+                      filteredProjects
                         .flatMap((project) => project.technologies ?? [])
                         .sort((tech1, tech2) => projects.filter((project) => project.technologies?.includes(tech1)).length - projects.filter((project) => project.technologies?.includes(tech2)).length)
                         .reverse()
@@ -429,7 +429,7 @@ const App = () => {
                 <AccordionDetails>
                   {Array.from(
                     new Set(
-                      projects
+                      filteredProjects
                         .flatMap((project) => project.types ? ["All", ...project.types] : [])
                         .sort((type1, type2) =>
                           projects.filter((project) => project.types?.includes(type1)).length - projects.filter((project) => project.types?.includes(type2)).length)
@@ -439,7 +439,7 @@ const App = () => {
                   ).map((type, index) => (
                     <Chip
                       key={index}
-                      label={type + " (" + projects.filter((project) => project.types?.includes(type)).length + ")"}
+                      label={type + " (" + filteredProjects.filter((project) => project.types?.includes(type)).length + ")"}
                       onClick={() => handleFilterType(type)}
                       sx={{ mr: 1, mb: 1 }}
                       color={type === filterType ? "secondary" : "default"}
