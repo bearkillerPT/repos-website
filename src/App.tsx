@@ -24,22 +24,37 @@ import {
   CardActionArea,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { Project_t, language_t } from "./Types";
+import { GithubProject, Project_t, Translation_t, language_t } from "./Types";
 import { languages } from './languages';
 import { darkTheme, lightTheme } from "./themes";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Lightbulb } from "@mui/icons-material";
 import { grey, indigo } from "@mui/material/colors";
 
+const projectsHeaderTranslation: Translation_t = {
+  en: "If a project repository is set to private or no repository is provided, no creation date will be shown.",
+  pt: "Se o repositório do projeto estiver definido como privado ou nenhum repositório for fornecido, nenhuma data de criação será exibida.",
+};
+
 const ProjectCard = ({ project,
   theme,
-  language }: {
-    project: Project_t,
-    theme: string,
-    language: language_t
-  }) => {
+  language,
+  githubProjects
+}: {
+  project: Project_t,
+  theme: string,
+  language: language_t
+  githubProjects: GithubProject[]
+},
+) => {
   const { image, video, url, title, subtitle, types, technologies, repo } =
     project;
+
+  const last_update_translation: Translation_t = {
+    en: "Last update",
+    pt: "Última atualização",
+  };
+
   // if a technology is of type "tech1, tech2, ..." then it will be split into an array of tech1, tech2, ... 
   // and the original technology will not be included
   // and withouth changing the original array
@@ -55,8 +70,9 @@ const ProjectCard = ({ project,
   };
   const technologiesArray = splitTags(technologies || []);
   const typesArray = splitTags(types || []);
-  
-
+  let date_created = githubProjects.find((githubProject) => {
+    return githubProject.html_url === repo
+  })?.created_at
   return (
     <Card
       sx={{ position: "relative", height: "100%" }}
@@ -109,24 +125,32 @@ const ProjectCard = ({ project,
           bottom: 0,
           right: 0,
           justifyContent: "space-between",
+          width: "100%",
         }}
       >
-        <Box>
-          {url && (
-            <Button
-              href={url}
-              target="_blank"
-              size="small"
-              color="secondaryButton"
-              variant="contained"
-              sx={{
-                mr: 1,
-                color: "white",
-              }}
-            >
-              {languages.project.websiteButton[language]}
-            </Button>
-          )}
+        {date_created ? (
+          <Box>
+          <Typography variant="body2" color="text.primary" paddingLeft={"2rem"} flex={1} sx={{
+            fontWeight: "bold",
+          }}>
+            {last_update_translation[language]}: 
+          </Typography>
+          <Typography variant="body2" color="text.primary" paddingLeft={"2rem"} flex={1}>
+            {new Date(date_created).toLocaleDateString()}
+          </Typography>
+          </Box>) : (
+          <Typography variant="body2" color="text.primary" paddingLeft={"5%"} flex={1}>
+
+          </Typography>
+
+        )
+        }
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
           {repo && (
             <Tooltip title="GitHub Repository">
               <IconButton
@@ -140,6 +164,22 @@ const ProjectCard = ({ project,
               </IconButton>
             </Tooltip>
           )}
+          {url && (
+            <Button
+              href={url}
+              target="_blank"
+              size="small"
+              color="secondaryButton"
+              variant="contained"
+              sx={{
+                mr: 1,
+                color: "white",
+                height: "2rem",
+              }}
+            >
+              {languages.project.websiteButton[language]}
+            </Button>
+          )}
         </Box>
       </CardActions>
     </Card>
@@ -149,6 +189,7 @@ const ProjectCard = ({ project,
 
 const App = () => {
   const [projects, setProjects] = useState<Project_t[]>([])
+  const [githubProjects, setGithubProjects] = useState<GithubProject[]>([])
   const [language, setLanguage] = useState<"pt" | "en">("en");
   const [theme, setTheme] = useState("dark");
   const [filteredProjects, setFilteredProjects] = useState<Project_t[]>(projects);
@@ -157,6 +198,7 @@ const App = () => {
   const [techFilterExpanded, setTechFilterExpanded] = useState(false);
   const [typeFilterExpanded, setTypeFilterExpanded] = useState(false);
   useEffect(() => {
+    // Fetch the projects from my github hosted json file
     fetch('https://raw.githubusercontent.com/bearkillerPT/repos-website/main/public/projects.json')
       .then((res) => res.json())
       .then((res: Project_t[]) => {
@@ -203,6 +245,14 @@ const App = () => {
         })
         setProjects(res);
         setFilteredProjects(res);
+      })
+
+    // Fetch the projects from the github api
+    fetch('https://api.github.com/users/bearkillerPT/repos')
+      .then((res) => res.json()).then((res: GithubProject[]) => {
+        setGithubProjects(res);
+      }).catch((err) => {
+        console.log(err);
       })
   }, [])
   const handleLanguageChange = (event: any) => {
@@ -449,10 +499,18 @@ const App = () => {
               </Accordion>
             </Box>
           </Box>
+          <Box sx={{ width: '100%' }}>
+            <Typography sx={{
+              p: 1,
+              paddingLeft: "1rem",
+            }} color="text.primary">
+            {projectsHeaderTranslation[language]}
+            </Typography>
+          </Box>
           <Grid sx={{ p: 2 }} container spacing={2} flexGrow={1} bgcolor={"background.default"}>
             {filteredProjects.map((project, index) => (
               <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                <ProjectCard project={project} theme={theme} language={language} />
+                <ProjectCard project={project} theme={theme} language={language} githubProjects={githubProjects} />
               </Grid>
             ))}
           </Grid>
