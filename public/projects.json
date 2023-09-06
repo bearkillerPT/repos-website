@@ -1,5 +1,25 @@
 [
   {
+    "repo": "https://github.com/bearkillerPT/NielsenHeuristicsGraph",
+    "video": null,
+    "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/NielsenHeuristicsGraph.png",
+    "url": null,
+    "title": {
+      "en": "Nielsen Heuristics Graph",
+      "pt": "Gráfico para Heurísticas de Nielsen"
+    },
+    "subtitle": {
+      "en": "A python3 script to parse and create a graph from a Nielsen Heuristics evaluation",
+      "pt": "Um script em python3 para fazer parse e criar um gráfico a partir de uma avaliação de Heurísticas de Nielsen"
+    },
+    "technologies": [
+      "Python"
+    ],
+    "types": [
+      "School Project"
+    ]
+  },
+  {
     "repo": null,
     "video": null,
     "image": "https://github.com/bearkillerPT/repos-website/raw/main/public/firstPaper.png",
