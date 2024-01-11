@@ -76,9 +76,11 @@ const ProjectCard = ({ project,
   return (
     <Card
       sx={{ position: "relative", height: "100%" }}
+      key={title[language]}
     >
       {video && (
         <video loop autoPlay muted controls style={{
+          width: "100%",
           height: "200px",
         }}>
           <source src={video} type="video/mp4" />
