@@ -53,12 +53,12 @@ export const languages = {
       pt: "Tipo"
     },
     show_all: {
-      en: "Show All",
-      pt: "Mostrar Todos"
+      en: "Show Filters",
+      pt: "Mostrar Filtros"
     },
     hide_all: {
-      en: "Hide All",
-      pt: "Esconder Todos"
+      en: "Hide Filters",
+      pt: "Esconder Filtros"
     }
   },
   themes: {
