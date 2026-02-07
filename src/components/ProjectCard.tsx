@@ -40,7 +40,7 @@ const ProjectCard = ({ project,
     const typesArray = splitTags(types || []);
     let date_created = githubProjects.find((githubProject) => {
       return githubProject.html_url === repo
-    })?.created_at
+    })?.updated_at
     return (
       <Card
         sx={{ position: "relative", height: "100%" }}

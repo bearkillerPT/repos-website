@@ -257,8 +257,8 @@ const App = () => {
           </Box>
 
           <Box bgcolor={"background.paper"}>
-            <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
-              <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
+            <Box sx={{ display: 'flex', flexDirection: "column", p: 1 }}>
+              <Typography variant="subtitle1" color="text.primary">
                 {languages.filters[language] + languages.filters.tech[language]}:
               </Typography>
               <Accordion
@@ -299,8 +299,8 @@ const App = () => {
               backgroundColor: 'background.default',
 
             }} />
-            <Box sx={{ display: 'flex', mb: 2, p: 2 }}>
-              <Typography variant="subtitle1" sx={{ mr: 2, width: "6rem" }} color="text.primary">
+            <Box sx={{ display: 'flex', flexDirection: "column", p: 1 }}>
+              <Typography variant="subtitle1" color="text.primary">
                 {languages.filters[language] + languages.filters.type[language]}:
               </Typography>
               <Accordion
