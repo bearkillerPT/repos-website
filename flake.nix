@@ -20,14 +20,22 @@
         default = pkgs.callPackage ./nix/package.nix { };
       });
 
-      # nix develop → the bun and node the Pi builds with
-      devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell {
-          packages = [
-            pkgs.bun
-            pkgs.nodejs
-          ];
-        };
-      });
+      # nix develop → the bun, node and Typst (with the CV's template and fonts) the Pi builds with
+      devShells = forAllSystems (
+        pkgs:
+        let
+          site = pkgs.callPackage ./nix/package.nix { };
+        in
+        {
+          default = pkgs.mkShell {
+            packages = [
+              pkgs.bun
+              pkgs.nodejs
+              site.typstWithTemplate
+            ];
+            TYPST_FONT_PATHS = site.cvFonts;
+          };
+        }
+      );
     };
 }

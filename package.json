@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && node scripts/build.mjs",
+    "cv": "bun scripts/cv-data.ts && typst compile --root cv --pdf-standard ua-1 cv/cv.typ public/cv.pdf",
     "preview": "vite preview",
     "typecheck": "tsc -b"
   },

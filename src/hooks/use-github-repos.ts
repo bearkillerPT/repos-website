@@ -9,7 +9,7 @@ export interface RepoStats {
 export type RepoStatsMap = Record<string, RepoStats>;
 
 const OWNERS = ["bearkillerPT"];
-const CACHE_KEY = "github-repos-v1";
+const CACHE_KEY = "github-repos-v2";
 const CACHE_MS = 60 * 60 * 1000;
 
 interface GitHubRepo {
@@ -48,21 +48,39 @@ function writeCache(data: RepoStatsMap) {
  * 60 requests an hour per visitor, so the answer is kept for the session). The page
  * works the same without it; the numbers just don't show.
  */
-export function useGitHubRepos(): RepoStatsMap {
-  const [repos, setRepos] = useState<RepoStatsMap>(() => readCache() ?? {});
+export function useGitHubRepos(otherRepos: string[] = []): RepoStatsMap {
+  // Empty until the page has loaded, as in the prerendered HTML, so the two agree
+  const [repos, setRepos] = useState<RepoStatsMap>({});
+  const others = otherRepos.join(" ");
 
   useEffect(() => {
-    if (readCache()) return;
+    const cached = readCache();
+    if (cached) {
+      setRepos(cached);
+      return;
+    }
     const controller = new AbortController();
+    const get = <T,>(url: string, fallback: T) =>
+      fetch(url, { signal: controller.signal, headers: { Accept: "application/vnd.github+json" } }).then(
+        (res) => (res.ok ? (res.json() as Promise<T>) : fallback),
+      );
 
-    Promise.all(
-      OWNERS.map((owner) =>
-        fetch(`https://api.github.com/users/${owner}/repos?per_page=100&type=owner`, {
-          signal: controller.signal,
-          headers: { Accept: "application/vnd.github+json" },
-        }).then((res) => (res.ok ? (res.json() as Promise<GitHubRepo[]>) : [])),
+    // Other people's repos (the ones I've sent pull requests to) all come back from one search
+    const search = others
+      ? get<{ items: GitHubRepo[] }>(
+          `https://api.github.com/search/repositories?per_page=100&q=${encodeURIComponent(
+            others.split(" ").map((name) => `repo:${name}`).join(" "),
+          )}`,
+          { items: [] },
+        ).then((result) => result.items)
+      : Promise.resolve([]);
+
+    Promise.all([
+      ...OWNERS.map((owner) =>
+        get<GitHubRepo[]>(`https://api.github.com/users/${owner}/repos?per_page=100&type=owner`, []),
       ),
-    )
+      search,
+    ])
       .then((lists) => {
         const data: RepoStatsMap = {};
         for (const repo of lists.flat()) {
@@ -79,7 +97,7 @@ export function useGitHubRepos(): RepoStatsMap {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [others]);
 
   return repos;
 }

@@ -1,34 +1,26 @@
-export type Category =
-  | "product"
-  | "extension"
-  | "bot"
-  | "freelance"
-  | "research"
-  | "university"
-  | "library";
+export type Category = "app" | "extension" | "bot" | "freelance" | "university" | "library";
 
 export const categoryLabels: Record<Category, string> = {
-  product: "Apps & products",
+  app: "Web & mobile apps",
   extension: "Browser extensions",
   bot: "Bots & automation",
   freelance: "Freelance",
-  research: "Research",
-  university: "University",
+  university: "University & research",
   library: "Libraries & infrastructure",
 };
 
-/** The All projects filters: every category, plus "Web apps", which cuts across them */
-export type ProjectFilter = Category | "web";
+/** The All projects filters are the categories */
+export type ProjectFilter = Category;
+export const filterLabels = categoryLabels;
 
-export const filterLabels: Record<ProjectFilter, string> = { web: "Web apps", ...categoryLabels };
-
+/** Apps from other categories (a freelance web app, a university React Native app) also show under "Web & mobile apps" */
 export function matchesFilter(project: Project, filter: ProjectFilter) {
-  return filter === "web" ? Boolean(project.webApp) : project.category === filter;
+  return project.category === filter || (filter === "app" && Boolean(project.app));
 }
 
 /** Links to these anchors (like the intro's "bots") open All projects with that filter on */
 export const filterAnchors: Partial<Record<ProjectFilter, string>> = {
-  web: "web-apps",
+  app: "apps",
   bot: "bots",
   extension: "browser-extensions",
 };
@@ -53,8 +45,8 @@ export interface Project {
   years: string;
   sortYear: number;
   category: Category;
-  /** A web app (a web front end, usually with its own back end); also listed under "Web apps" */
-  webApp?: boolean;
+  /** A web or mobile app filed under another category; also listed under "Web & mobile apps" */
+  app?: boolean;
   tech: string[];
   /** A public GitHub repository; its stars and last push are read from the GitHub API */
   repo?: string;
@@ -100,37 +92,38 @@ export const projects: Project[] = [
     slug: "plughere",
     title: "Plug Here",
     summary:
-      "Booking and managing electric-vehicle charging in apartment buildings: the website, a TypeScript API on PostgreSQL, and the chargers themselves talking MQTT.",
+      "A startup's EV-charging system for apartment buildings: a React Native app to book shared chargers, a Node.js API, and our own ESP32 chargers talking MQTT.",
     details:
-      "Residents reserve a shared charger and the station reports its state and energy use over MQTT while the session runs. The whole stack, including always-on charger emulators, runs on the same Raspberry Pi as this site. Launching soon.",
-    years: "2023 – 2025",
-    sortYear: 2025,
-    category: "product",
-    webApp: true,
-    tech: ["TypeScript", "Node.js", "PostgreSQL", "MQTT", "Vite", "Python"],
-    links: [{ label: "plughere.app", href: "https://plughere.app" }],
+      "Residents book a charger in the app and get notified about their reservations. The charger shows the next booking on its screen, meters each session and reports its state and energy use over MQTT. It reached a working prototype but never went into production; the API, the MQTT broker and charger emulators still run on the same Raspberry Pi as this site, for demos.",
+    years: "2023 – 2026",
+    sortYear: 2026,
+    category: "app",
+    tech: ["React Native", "Expo", "TypeScript", "Node.js", "PostgreSQL", "MQTT", "ESP32"],
+    links: [{ label: "Website", href: "https://plughere.app" }],
     media: {
       type: "image",
       src: "/media/plughere.webp",
-      alt: "The Plug Here landing page: “Plug anywhere.” in large type on a dark teal background.",
+      alt: "The Plug Here charger, a grey box with a blue socket and a small screen showing the next reservation, beside the Plug Here logo.",
     },
     featured: true,
   },
   {
-    slug: "c-its-paper",
-    // Non-breaking hyphens (U+2011): "In-" / "Vehicle" split across lines reads badly
-    title: "A Modular In\u2011Vehicle C\u2011ITS Architecture",
+    slug: "c-its",
+    // Non-breaking hyphen (U+2011), so "C-" and "ITS" never split across lines
+    title: "C\u2011ITS Mobile App",
     summary:
-      "Journal paper in MDPI Sensors, picked as an Editor's Choice article: sensor data collection, vehicular communications and cloud connectivity for cooperative intelligent transport systems.",
+      "My master's dissertation at Instituto de Telecomunicações, graded 18/20: a React Native app for cooperative intelligent transport systems, and a journal paper in MDPI Sensors picked as an Editor's Choice.",
     details:
-      "Written at Instituto de Telecomunicações as part of my master's work, it looks at how a V2X phone app in the car can produce reliable sensor readings. Sensors 2023, 23(3), 1724.",
-    years: "2023",
-    sortYear: 2023,
-    category: "research",
-    tech: ["C", "C++", "Python", "MQTT", "React Native", "Expo"],
+      "The app shows and creates V2X messages (like DENMs) shared over MQTT, and requests services such as tolling and EV charging. Alongside it I implemented an ETSI-layered C++ stack for on-board and roadside units, handling ASN.1 messages for charging-station discovery and reservations, and a multithreaded C broker that translates UPER and XML messages to JSON. The paper, “A Modular In-Vehicle C-ITS Architecture for Sensor Data Collection, Vehicular Communications and Cloud Connectivity”, looks at how a phone in the car can produce reliable sensor readings.",
+    years: "2022 – 2024",
+    sortYear: 2024,
+    category: "university",
+    app: true,
+    tech: ["React Native", "Expo", "MQTT", "C", "C++", "ASN.1"],
+    repo: gh("bearkillerPT/Dissertation"),
     links: [
       { label: "Read the paper", href: "https://www.mdpi.com/1424-8220/23/3/1724" },
-      { label: "DOI", href: "https://doi.org/10.3390/s23031724" },
+      { label: "Dissertation", href: "https://www.overleaf.com/read/kgnwtrzpwtpt" },
     ],
     media: {
       type: "image",
@@ -184,25 +177,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "csgofast",
-    title: "CSGOFast HiLo Bot",
-    summary:
-      "A Python and Playwright bot that claims the free coins and bets them in HiLo with Martingale, Paroli and Kelly-style strategies.",
-    details:
-      "The balance chart is the honest result: with a 47.5% chance to double, the house still wins.",
-    years: "2025",
-    sortYear: 2025,
-    category: "bot",
-    tech: ["Python", "Playwright"],
-    repo: gh("bearkillerPT/csgofast-hilo-bot"),
-    media: {
-      type: "image",
-      src: "/media/csgofast.webp",
-      alt: "Line chart of the bot's balance over a few days, for three strategies, climbing and then falling back to zero.",
-      fit: "contain",
-    },
-  },
-  {
     slug: "nordic-thingy",
     title: "React Native Nordic Thingy",
     summary:
@@ -214,27 +188,13 @@ export const projects: Project[] = [
     repo: gh("bearkillerPT/react-native-nordic-thingy"),
   },
   {
-    slug: "dissertation",
-    title: "Master's Dissertation: C-ITS Mobile App",
-    summary:
-      "A React Native app for cooperative intelligent transport systems, written at Instituto de Telecomunicações and graded 18/20.",
-    details:
-      "The app shows and creates V2X messages (like DENMs) shared over MQTT, and requests services such as tolling and EV charging. Alongside it I implemented an ETSI-layered C++ stack for on-board and roadside units, handling ASN.1 messages for charging-station discovery and reservations, and a multithreaded C broker that translates UPER and XML messages to JSON. Defended in July 2024.",
-    years: "2022 – 2024",
-    sortYear: 2024,
-    category: "research",
-    tech: ["React Native", "Expo", "MQTT", "C", "C++", "ASN.1"],
-    repo: gh("bearkillerPT/Dissertation"),
-    links: [{ label: "Read on Overleaf", href: "https://www.overleaf.com/read/kgnwtrzpwtpt" }],
-  },
-  {
     slug: "gps-speedometer",
     title: "GPS Speedometer",
     summary:
       "An Expo app that shows your GPS speed in huge, bold numbers, with a focus mode that makes them even bigger, because I couldn't read my car's speedometer on the motorway.",
     years: "2023 – 2024",
     sortYear: 2024,
-    category: "product",
+    category: "app",
     tech: ["React Native", "Expo", "TypeScript"],
     repo: gh("bearkillerPT/gps-speedometer"),
     media: {
@@ -307,7 +267,7 @@ export const projects: Project[] = [
     years: "2022 – 2023",
     sortYear: 2023,
     category: "university",
-    webApp: true,
+    app: true,
     tech: ["Python", "Jupyter", "scikit-learn", "Flask", "React"],
     repo: gh("bearkillerPT/DataMining"),
     links: [{ label: "Live demo", href: "https://ed.bearkillerpt.xyz/" }],
@@ -341,7 +301,7 @@ export const projects: Project[] = [
     years: "2022",
     sortYear: 2022,
     category: "freelance",
-    webApp: true,
+    app: true,
     tech: ["TypeScript", "React", "KonvaJS", "Node.js", "Express", "MariaDB"],
     media: {
       type: "image",
@@ -396,10 +356,10 @@ export const projects: Project[] = [
     years: "2021 – 2022",
     sortYear: 2022,
     category: "university",
-    webApp: true,
+    app: true,
     tech: ["React", "D3.js", "JavaScript"],
     repo: gh("bearkillerPT/IV/tree/main/technical_ceramics"),
-    links: [{ label: "Live site", href: "https://iv.bearkillerpt.xyz/" }],
+    links: [{ label: "Live demo", href: "https://iv.bearkillerpt.xyz/" }],
     media: {
       type: "image",
       src: "/media/technical-ceramics.webp",
@@ -414,10 +374,10 @@ export const projects: Project[] = [
     years: "2021",
     sortYear: 2021,
     category: "freelance",
-    webApp: true,
+    app: true,
     tech: ["React Native", "Expo", "TypeScript", "Firebase"],
     repo: gh("bearkillerPT/heaboo_log_my_work"),
-    links: [{ label: "Web app", href: "https://heaboo.bearkillerpt.xyz/" }],
+    links: [{ label: "Live demo", href: "https://heaboo.bearkillerpt.xyz/" }],
     media: {
       type: "video",
       src: "https://raw.githubusercontent.com/bearkillerPT/heaboo_log_my_work/main/demos/fullDemo.mp4",
@@ -449,7 +409,7 @@ export const projects: Project[] = [
     years: "2021",
     sortYear: 2021,
     category: "university",
-    webApp: true,
+    app: true,
     tech: ["Angular", "JavaScript", "Firebase"],
     repo: gh("Unn4m3DD/symbolearn"),
     media: {
@@ -490,7 +450,7 @@ export const projects: Project[] = [
     category: "university",
     tech: ["Java", "ANTLR4", "JavaScript"],
     repo: gh("bearkillerPT/Board-Description-Language_and_ABDL"),
-    links: [{ label: "Chess demo", href: "https://bdl.bearkillerpt.xyz/" }],
+    links: [{ label: "Live demo", href: "https://bdl.bearkillerpt.xyz/" }],
     media: {
       type: "video",
       src: "https://raw.githubusercontent.com/Unn4m3DD/xadrez-para-cegos/master/demo.mp4",

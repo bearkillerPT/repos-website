@@ -1,7 +1,8 @@
 import { Section } from "@/components/section";
 import { experience, type Job } from "@/data/profile";
+import { useNow } from "@/hooks/use-now";
 
-const monthYear = new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric" });
+const monthYear = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" });
 
 function parseMonth(month: string) {
   const [year, index] = month.split("-").map(Number);
@@ -14,9 +15,8 @@ const formatMonth = (month: string) => {
 };
 
 /** "2 yrs 9 mos", counting both the first and the last month, like LinkedIn */
-function duration({ start, end }: Job) {
+function duration({ start, end }: Job, now: Date) {
   const from = parseMonth(start);
-  const now = new Date();
   const to = end ? parseMonth(end) : { year: now.getFullYear(), index: now.getMonth() + 1 };
   const months = (to.year - from.year) * 12 + (to.index - from.index) + 1;
   const years = Math.floor(months / 12);
@@ -30,6 +30,7 @@ function duration({ start, end }: Job) {
 }
 
 export function Experience() {
+  const now = useNow();
   return (
     <Section id="experience" number="02" title="Experience">
       <ol className="border-t-2 border-foreground">
@@ -43,14 +44,15 @@ export function Experience() {
                 <time dateTime={job.start}>{formatMonth(job.start)}</time> –{" "}
                 {job.end ? <time dateTime={job.end}>{formatMonth(job.end)}</time> : "now"}
               </span>
-              <span className="block">{duration(job)}</span>
+              <span className="block">{duration(job, now)}</span>
             </p>
             <div className="flex max-w-3xl flex-col gap-3">
               <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
                 {job.role} <span className="font-normal">at</span>{" "}
                 <a
                   href={job.href}
-                  className="rounded-sm underline decoration-2 underline-offset-4 hover:decoration-highlight-frame"
+                  // Hyphenated names ("A-to-Be") would break at the hyphens; long ones need to wrap
+                  className={`${job.company.includes("-") ? "whitespace-nowrap " : ""}rounded-sm underline decoration-2 underline-offset-4 hover:decoration-highlight-frame`}
                 >
                   {job.company}
                 </a>

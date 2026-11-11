@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
 export type Theme = "light" | "dark";
 
@@ -14,32 +14,27 @@ function readStored(): Theme | null {
 }
 
 const systemQuery = () => window.matchMedia("(prefers-color-scheme: dark)");
+const apply = (theme: Theme) => document.documentElement.classList.toggle("dark", theme === "dark");
 
 /**
- * Follows the system theme until the visitor picks one. index.html applies the same
- * logic before the first paint, so there's no flash of the wrong theme.
+ * The theme lives in the `dark` class on <html>, set by index.html before the first paint. It
+ * isn't React state, so the prerendered page and the browser always agree; whatever shows the
+ * theme (like the toggle's label) does it with `dark:` CSS.
  */
 export function useTheme() {
-  const [theme, setThemeState] = useState<Theme>(() =>
-    document.documentElement.classList.contains("dark") ? "dark" : "light",
-  );
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
-
   // Keep following the system while nothing is stored
   useEffect(() => {
     const query = systemQuery();
     const onChange = (event: MediaQueryListEvent) => {
-      if (!readStored()) setThemeState(event.matches ? "dark" : "light");
+      if (!readStored()) apply(event.matches ? "dark" : "light");
     };
     query.addEventListener("change", onChange);
     return () => query.removeEventListener("change", onChange);
   }, []);
 
-  const setTheme = useCallback((next: Theme) => {
-    setThemeState(next);
+  const toggle = useCallback(() => {
+    const next: Theme = document.documentElement.classList.contains("dark") ? "light" : "dark";
+    apply(next);
     try {
       // Picking the system's own theme goes back to following it
       if ((systemQuery().matches ? "dark" : "light") === next) localStorage.removeItem(STORAGE_KEY);
@@ -49,5 +44,5 @@ export function useTheme() {
     }
   }, []);
 
-  return { theme, setTheme };
+  return { toggle };
 }

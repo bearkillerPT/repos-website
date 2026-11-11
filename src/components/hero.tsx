@@ -1,4 +1,4 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { GitHubIcon, LinkedInIcon } from "@/components/icons";
@@ -17,6 +17,12 @@ function WorkLink({ filter, children }: { filter: ProjectFilter; children: React
     </a>
   );
 }
+
+/** "A-to-Be" would otherwise break at its hyphens on narrow screens */
+const AtoBe = () => <span className="whitespace-nowrap">A-to-Be</span>;
+
+/** One sentence per line, on every screen size, so no word dangles at a line's end */
+const Line = ({ children }: { children: ReactNode }) => <span className="block">{children}</span>;
 
 export function Hero() {
   return (
@@ -43,20 +49,15 @@ export function Hero() {
         </h1>
       </div>
 
-      {/* Each kind of work opens All projects with that filter on (see project-index.tsx) */}
+      {/* "automate things" opens All projects filtered to bots (see project-index.tsx) */}
       <p className="mt-10 max-w-4xl text-3xl leading-snug font-bold tracking-tight text-balance md:text-5xl md:leading-tight">
-        {/* One sentence per line on wider screens, so "In" doesn't dangle at a line's end */}
-        <span className="md:block">
-          I build <WorkLink filter="web">web apps</WorkLink> at work.
-        </span>{" "}
-        <span className="md:block">
-          In my free time, I make <WorkLink filter="bot">bots</WorkLink> and{" "}
-          <WorkLink filter="extension">browser extensions</WorkLink>.
-        </span>
+        <Line>I'm a full-stack developer: React up front, Python or Node.js behind it.</Line>
+        <Line>
+          On the side, I <WorkLink filter="bot">automate things</WorkLink>.
+        </Line>
       </p>
       <p className="mt-6 max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl md:leading-relaxed">
-        Full-stack software engineer at A-to-Be and Morphotech, mostly React up front and Node.js or
-        Python behind it.
+        Software engineer at <AtoBe /> and Morphotech, based in Portugal.
       </p>
 
       <ul className="mt-10 flex flex-wrap gap-3">
@@ -65,6 +66,14 @@ export function Hero() {
             <a href="#work">
               See my work
               <ArrowDown aria-hidden="true" />
+            </a>
+          </Button>
+        </li>
+        <li>
+          <Button asChild size="lg" variant="outline">
+            <a href={`mailto:${profile.email}`}>
+              <Mail aria-hidden="true" />
+              Email me
             </a>
           </Button>
         </li>
