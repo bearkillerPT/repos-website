@@ -1,4 +1,4 @@
-import { FileDown, Menu, Moon, Sun } from "lucide-react";
+import { FileDown, Mail, Menu, Moon, Sun } from "lucide-react";
 import { useRef, useState, type MouseEvent } from "react";
 
 import { GitHubIcon, LinkedInIcon } from "@/components/icons";
@@ -47,22 +47,25 @@ export function SiteHeader() {
   );
 }
 
+/**
+ * Both labels are in the page and the `dark` class on <html> picks which one shows (and which one
+ * screen readers hear), so the prerendered HTML is right before any JavaScript runs.
+ */
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const next = theme === "dark" ? "light" : "dark";
-  const Icon = next === "dark" ? Moon : Sun;
-  const label = next === "dark" ? "Dark theme" : "Light theme";
+  const { toggle } = useTheme();
 
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      className="text-base"
-      aria-label={`Switch to ${label.toLowerCase()}`}
-      onClick={() => setTheme(next)}
-    >
-      <Icon aria-hidden="true" />
-      <span className="hidden sm:inline">{label}</span>
+    <Button variant="outline" size="sm" className="hidden text-base js:inline-flex" onClick={toggle}>
+      <Moon aria-hidden="true" className="dark:hidden" />
+      <Sun aria-hidden="true" className="hidden dark:block" />
+      <span className="contents dark:hidden">
+        <span className="sr-only">Switch to </span>
+        <span className="sr-only sm:not-sr-only">Dark theme</span>
+      </span>
+      <span className="hidden dark:contents">
+        <span className="sr-only">Switch to </span>
+        <span className="sr-only sm:not-sr-only">Light theme</span>
+      </span>
     </Button>
   );
 }
@@ -83,7 +86,7 @@ function SectionsMenu() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="sm" className="text-base lg:hidden">
+        <Button variant="outline" size="sm" className="hidden text-base js:inline-flex js:lg:hidden">
           <Menu aria-hidden="true" />
           <span className="sr-only sm:not-sr-only">Menu</span>
         </Button>
@@ -116,7 +119,7 @@ function SectionsMenu() {
                 <a
                   href={`#${section.id}`}
                   onClick={(event) => choose(event, section.id)}
-                  className="flex items-baseline gap-4 border-b-2 px-6 py-5 text-3xl font-extrabold tracking-tight transition-colors outline-offset-[-4px] hover:bg-accent"
+                  className="flex items-baseline gap-4 border-b-2 px-6 py-5 text-3xl font-extrabold tracking-tight transition-colors -outline-offset-4 hover:bg-accent"
                 >
                   <span className="font-mono text-base font-normal text-muted-foreground" aria-hidden="true">
                     {section.number}
@@ -128,6 +131,14 @@ function SectionsMenu() {
           </ul>
         </nav>
         <ul className="flex flex-wrap gap-3 border-t-2 px-6 py-5">
+          <li>
+            <Button asChild variant="highlight">
+              <a href={`mailto:${profile.email}`}>
+                <Mail aria-hidden="true" />
+                Email
+              </a>
+            </Button>
+          </li>
           <li>
             <Button asChild variant="outline">
               <a href={profile.github}>

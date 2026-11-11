@@ -10,3 +10,7 @@
 .DS_Store
 .env*.local
 *.tsbuildinfo
+
+# CV build output (bun run cv)
+/cv/build
+/public/cv.pdf

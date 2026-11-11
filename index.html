@@ -24,14 +24,14 @@
     <meta property="og:title" content="Gil Teixeira · Full-stack developer" />
     <meta
       property="og:description"
-      content="I build web apps at work. In my free time, I make bots and browser extensions."
+      content="I'm a full-stack developer: React up front, Python or Node.js behind it. On the side, I automate things."
     />
     <meta property="og:image" content="https://bearkillerpt.xyz/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Same rule as src/hooks/use-theme.ts, before the first paint so the theme never flashes -->
+    <!-- Theme as in src/hooks/use-theme.ts, before the first paint so it never flashes -->
     <script>
       (function () {
         var stored = null;
@@ -40,16 +40,13 @@
         } catch (e) {}
         var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
         document.documentElement.classList.toggle("dark", dark);
+        // Lets CSS hide what only works with JavaScript, like "Show all projects" (the js: variant)
+        document.documentElement.classList.add("js");
       })();
     </script>
   </head>
   <body>
-    <noscript>
-      <p style="padding: 2rem; font: 1.25rem/1.6 sans-serif">
-        This site needs JavaScript. My projects are on
-        <a href="https://github.com/bearkillerPT">GitHub</a>.
-      </p>
-    </noscript>
+    <!-- scripts/build.mjs puts the prerendered page in here -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

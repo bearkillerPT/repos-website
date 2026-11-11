@@ -1,4 +1,4 @@
-# The static site, ready for nginx's `root`.
+# The static site, ready for nginx's `root`, with the CV built into it as cv.pdf.
 #
 # `bun install` is the only step that needs the network, so it runs in a fixed-output
 # derivation (node_modules below), and the Vite build then runs offline on top of it.
@@ -9,10 +9,23 @@
   stdenvNoCC,
   bun,
   nodejs,
+  typst,
+  roboto,
+  source-sans,
+  font-awesome,
 }:
 let
   packageJson = lib.importJSON ../package.json;
   inherit (packageJson) version;
+
+  # The CV (cv/cv.typ): Typst, its template and its fonts all come from nixpkgs, so it builds
+  # offline. The template version here must match the @preview import in cv/cv.typ.
+  typstWithTemplate = typst.withPackages (ps: [ ps.brilliant-cv_4_0_1 ]);
+  cvFonts = lib.makeSearchPath "share/fonts" [
+    roboto
+    source-sans
+    font-awesome
+  ];
 
   node_modules = stdenvNoCC.mkDerivation {
     pname = "repos-website-node-modules";
@@ -64,18 +77,23 @@ stdenvNoCC.mkDerivation {
       ../package.json
       ../bun.lock
       ../index.html
+      ../404.html
       ../vite.config.ts
       ../tsconfig.json
       ../tsconfig.app.json
       ../tsconfig.node.json
       ../src
+      ../scripts
       ../public
+      ../cv/cv.typ
+      ../cv/photo.jpg
     ];
   };
 
   nativeBuildInputs = [
     bun
     nodejs
+    typstWithTemplate
   ];
 
   configurePhase = ''
@@ -89,6 +107,9 @@ stdenvNoCC.mkDerivation {
 
   buildPhase = ''
     runHook preBuild
+    export HOME=$TMPDIR TYPST_FONT_PATHS=${cvFonts}
+    # public/cv.pdf first, so Vite ships it with the rest of public/
+    bun run cv
     bun run build
     runHook postBuild
   '';
@@ -99,7 +120,8 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
-  passthru = { inherit node_modules; };
+  # The dev shell (flake.nix) uses the same Typst and fonts
+  passthru = { inherit node_modules typstWithTemplate cvFonts; };
 
   meta = {
     description = "bearkillerpt.xyz, Gil Teixeira's portfolio";

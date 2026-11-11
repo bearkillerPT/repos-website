@@ -5,7 +5,7 @@ import { categoryLabels, type Project } from "@/data/projects";
 import { repoKey, type RepoStatsMap } from "@/hooks/use-github-repos";
 import { cn } from "cn";
 
-const monthYear = new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric" });
+const monthYear = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" });
 
 export function useRepoStats(project: Project, repos: RepoStatsMap) {
   const key = project.repo ? repoKey(project.repo) : null;
@@ -38,7 +38,7 @@ export function ProjectMeta({
       </span>,
     );
   }
-  if (stats) {
+  if (stats && pushedAfterYears(project, stats.pushedAt)) {
     parts.push(
       <span key="updated">
         updated <time dateTime={stats.pushedAt}>{monthYear.format(new Date(stats.pushedAt))}</time>
@@ -46,16 +46,24 @@ export function ProjectMeta({
     );
   }
 
+  // Each separator trails its item, so a wrapped line never starts with "·"
   return (
     <p className={cn("flex flex-wrap items-center gap-x-2 font-mono text-sm text-muted-foreground", className)}>
       {parts.map((part, index) => (
-        <span key={index} className="inline-flex items-center gap-2">
-          {index > 0 && <span aria-hidden="true">·</span>}
+        <span key={index} className="inline-flex items-center gap-2 whitespace-nowrap">
           {part}
+          {index < parts.length - 1 && <span aria-hidden="true">·</span>}
         </span>
       ))}
     </p>
   );
+}
+
+/** "updated Jul 2021" next to "2021" says nothing new; show it for ongoing or later-touched work */
+function pushedAfterYears(project: Project, pushedAt: string) {
+  if (/now\s*$/.test(project.years)) return true;
+  const lastYear = Math.max(...(project.years.match(/\d{4}/g) ?? ["0"]).map(Number));
+  return new Date(pushedAt).getFullYear() > lastYear;
 }
 
 export function TechList({ tech, className }: { tech: string[]; className?: string }) {

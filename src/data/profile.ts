@@ -3,8 +3,10 @@ export const profile = {
   handle: "bearkillerPT",
   github: "https://github.com/bearkillerPT",
   linkedin: "https://www.linkedin.com/in/gil-teixeira-ba5036135/",
+  email: "gilteixeira@ua.pt",
   youtube: "https://www.youtube.com/@amanofculture9440",
-  cv: "/Curriculo.pdf",
+  // Built from cv/cv.typ by `bun run cv` (and by the Nix build)
+  cv: "/cv.pdf",
   source: "https://github.com/bearkillerPT/repos-website",
   server: "https://github.com/bearkillerPT/raspberryConfs",
 };
@@ -29,12 +31,26 @@ export const experience: Job[] = [
     company: "A-to-Be",
     href: "https://www.a-to-be.com",
     start: "2026-02",
+    summary:
+      "Front end for MODALSHIFT, a Horizon Europe project on multimodal transport and traffic management: a React and TypeScript app with maps, live data and dashboards.",
   },
   {
     role: "Software Engineer",
     company: "Morphotech",
     href: "https://www.morphotech.com",
     start: "2024-02",
+    summary:
+      "Full-stack work, currently on Verassay: a React and TypeScript front end, and a Python (FastAPI) back end on PostgreSQL and AWS.",
+  },
+  {
+    // First and last commit of bearkillerPT/park2Charge; nearly every commit is mine
+    role: "Lead developer",
+    company: "Plug Here",
+    href: "https://plughere.app",
+    start: "2023-09",
+    end: "2026-10",
+    summary:
+      "A startup's EV-charging system for apartment buildings, built almost entirely by me: the React Native app, the Node.js API on PostgreSQL, the ESP32 charger firmware and the MQTT link between them. It reached a working prototype, not production.",
   },
   {
     role: "Researcher",

@@ -1,5 +1,6 @@
 import { Check, ChevronDown, Search, X } from "lucide-react";
 import { useDeferredValue, useEffect, useId, useMemo, useState } from "react";
+import { flushSync } from "react-dom";
 
 import { ProjectLinks } from "@/components/project-links";
 import { ProjectMedia } from "@/components/project-media";
@@ -21,24 +22,25 @@ import {
   filterLabels,
   matchesFilter,
   projects,
-  type Category,
   type Project,
   type ProjectFilter,
 } from "@/data/projects";
 import type { RepoStatsMap } from "@/hooks/use-github-repos";
+import { cn } from "cn";
 
 const sorted = [...projects].sort((a, b) => b.sortYear - a.sortYear);
 
 const countOf = (filter: ProjectFilter) =>
   projects.filter((project) => matchesFilter(project, filter)).length;
 
-// "Web apps" first, then the categories in the order of how many projects they hold
-const filters = [
-  { filter: "web" as ProjectFilter, count: countOf("web") },
-  ...(Object.keys(categoryLabels) as Category[])
-    .map((category) => ({ filter: category as ProjectFilter, count: countOf(category) }))
-    .sort((a, b) => b.count - a.count),
-].filter(({ count }) => count > 0);
+// "Web & mobile apps" first, then the rest in the order of how many projects they hold
+const filters = (Object.keys(filterLabels) as ProjectFilter[])
+  .map((filter) => ({ filter, count: countOf(filter) }))
+  .filter(({ count }) => count > 0)
+  .sort((a, b) => Number(b.filter === "app") - Number(a.filter === "app") || b.count - a.count);
+
+/** Unfiltered, the list starts with the newest few, so the next sections aren't miles away */
+const INITIAL_ROWS = 8;
 
 /** "#bots" → "bot", for links that open the list already filtered */
 function filterFromHash(hash: string): ProjectFilter | undefined {
@@ -62,7 +64,7 @@ function matches(project: Project, query: string) {
       project.details,
       project.years,
       categoryLabels[project.category],
-      project.webApp ? filterLabels.web : "",
+      project.app ? categoryLabels.app : "",
       ...project.tech,
     ].join(" "),
   );
@@ -74,9 +76,9 @@ function matches(project: Project, query: string) {
 
 export function ProjectIndex({ repos }: { repos: RepoStatsMap }) {
   const [query, setQuery] = useState("");
-  const [filter, setFilterState] = useState<ProjectFilter | "all">(
-    () => filterFromHash(window.location.hash) ?? "all",
-  );
+  // A #bots-style address is applied once the page has loaded (below), like the prerendered HTML
+  const [filter, setFilterState] = useState<ProjectFilter | "all">("all");
+  const [showAll, setShowAll] = useState(false);
   const deferredQuery = useDeferredValue(query.trim());
   const searchId = useId();
 
@@ -117,6 +119,23 @@ export function ProjectIndex({ repos }: { repos: RepoStatsMap }) {
     setFilter("all");
   };
 
+  // Filtering or searching always shows every match. Collapsed rows stay in the HTML (search
+  // engines and pages without JavaScript get them all); CSS hides them only when JavaScript runs.
+  const collapsed = !filtered && !showAll && visible.length > INITIAL_ROWS;
+
+  // The button disappears, so focus moves to the first project it revealed (rendered right
+  // away with flushSync, so it exists to be focused)
+  const revealAll = () => {
+    const next = visible[INITIAL_ROWS];
+    flushSync(() => setShowAll(true));
+    // Its More button if it has one, else its heading (focusable from script)
+    const row = document.querySelector(`[data-row="${next?.slug}"]`);
+    (
+      row?.querySelector<HTMLElement>('[data-slot="accordion-trigger"]') ??
+      row?.querySelector<HTMLElement>("h3")
+    )?.focus();
+  };
+
   return (
     <Section
       id="projects"
@@ -124,8 +143,8 @@ export function ProjectIndex({ repos }: { repos: RepoStatsMap }) {
       title="All projects"
       intro={
         <p>
-          Everything worth showing since 2020: web apps, bots, browser extensions, research and
-          university projects.
+          Everything worth showing since 2020: web and mobile apps, bots, browser extensions,
+          freelance work and university projects.
         </p>
       }
     >
@@ -197,11 +216,26 @@ export function ProjectIndex({ repos }: { repos: RepoStatsMap }) {
           </p>
         </div>
       ) : (
-        <Accordion type="multiple">
-          {visible.map((project) => (
-            <ProjectRow key={project.slug} project={project} repos={repos} />
-          ))}
-        </Accordion>
+        <>
+          <Accordion type="multiple">
+            {visible.map((project, index) => (
+              <ProjectRow
+                key={project.slug}
+                project={project}
+                repos={repos}
+                className={collapsed && index >= INITIAL_ROWS ? "js:hidden" : undefined}
+              />
+            ))}
+          </Accordion>
+          {collapsed && (
+            <div className="hidden pt-8 js:block">
+              <Button variant="outline" size="lg" onClick={revealAll}>
+                <ChevronDown aria-hidden="true" />
+                Show all {visible.length} projects
+              </Button>
+            </div>
+          )}
+        </>
       )}
     </Section>
   );
@@ -229,9 +263,19 @@ function CategoryItem({
   );
 }
 
-const rowGrid = "grid gap-x-8 gap-y-3 md:grid-cols-[7rem_minmax(0,1fr)_auto]";
+// Links sit beside the text from lg up; below that they go under it, or the summary gets squeezed
+const rowGrid =
+  "grid gap-x-8 gap-y-3 md:grid-cols-[7rem_minmax(0,1fr)] lg:grid-cols-[7rem_minmax(0,1fr)_auto]";
 
-function ProjectRow({ project, repos }: { project: Project; repos: RepoStatsMap }) {
+function ProjectRow({
+  project,
+  repos,
+  className,
+}: {
+  project: Project;
+  repos: RepoStatsMap;
+  className?: string;
+}) {
   const expandable = Boolean(project.media || project.details);
   const years = (
     <p className="font-mono text-base text-muted-foreground md:pt-1">{project.years}</p>
@@ -244,15 +288,20 @@ function ProjectRow({ project, repos }: { project: Project; repos: RepoStatsMap 
     </>
   );
   const links = (
-    <ProjectLinks project={project} className="content-start self-start md:max-w-72 md:justify-end" />
+    <ProjectLinks
+      project={project}
+      className="content-start self-start md:col-start-2 lg:col-start-auto lg:max-w-72 lg:justify-end"
+    />
   );
 
   if (!expandable) {
     return (
-      <div className={`${rowGrid} border-b-2 py-6`}>
+      <div data-row={project.slug} className={cn(rowGrid, "border-b-2 py-6", className)}>
         {years}
         <div className="flex flex-col gap-2">
-          <h3 className="text-2xl font-bold tracking-tight">{project.title}</h3>
+          <h3 tabIndex={-1} className="rounded-sm text-2xl font-bold tracking-tight">
+            {project.title}
+          </h3>
           {body}
         </div>
         {links}
@@ -261,7 +310,7 @@ function ProjectRow({ project, repos }: { project: Project; repos: RepoStatsMap 
   }
 
   return (
-    <AccordionItem value={project.slug} className="py-6">
+    <AccordionItem value={project.slug} data-row={project.slug} className={cn("py-6", className)}>
       <div className={rowGrid}>
         {years}
         <div className="flex flex-col gap-2">

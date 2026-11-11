@@ -5,6 +5,8 @@
 @import "@fontsource/atkinson-hyperlegible-mono/700.css";
 
 @custom-variant dark (&:is(.dark *));
+/* Set by index.html's inline script: things that only work with JavaScript */
+@custom-variant js (&:is(.js *));
 
 /*
  * Every text colour pair here clears WCAG AAA (7:1) against its background, and borders

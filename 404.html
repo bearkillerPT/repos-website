@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found · Gil Teixeira</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Same theme rule as index.html, before the first paint -->
+    <script>
+      (function () {
+        var stored = null;
+        try {
+          stored = localStorage.getItem("theme");
+        } catch (e) {}
+        var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.classList.toggle("dark", dark);
+      })();
+    </script>
+    <!-- nginx serves this page for any unknown address (error_page 404 in raspberryConfs) -->
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body>
+    <main class="mx-auto flex min-h-svh max-w-3xl flex-col justify-center gap-8 px-4 py-16 sm:px-8">
+      <p class="font-mono text-lg text-muted-foreground">404</p>
+      <h1 class="text-5xl leading-[1.05] font-extrabold tracking-tight text-balance md:text-7xl">
+        This page doesn't exist.
+      </h1>
+      <p class="text-xl leading-relaxed text-muted-foreground md:text-2xl md:leading-relaxed">
+        The address might have a typo, or the page has moved. Everything on this site is on the home
+        page.
+      </p>
+      <p>
+        <a
+          href="/"
+          class="inline-flex min-h-12 items-center rounded-full bg-primary px-6 py-2.5 text-lg font-semibold text-primary-foreground hover:bg-primary/85"
+        >
+          Go to the home page
+        </a>
+      </p>
+    </main>
+  </body>
+</html>

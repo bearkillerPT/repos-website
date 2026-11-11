@@ -1,5 +1,5 @@
 import { About } from "@/components/about";
-import { Contributions } from "@/components/contributions";
+import { contributionRepos, Contributions } from "@/components/contributions";
 import { Experience } from "@/components/experience";
 import { FeaturedProjects } from "@/components/featured-projects";
 import { Hero } from "@/components/hero";
@@ -9,7 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 import { useGitHubRepos } from "@/hooks/use-github-repos";
 
 export default function App() {
-  const repos = useGitHubRepos();
+  const repos = useGitHubRepos(contributionRepos);
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function App() {
         <FeaturedProjects repos={repos} />
         <Experience />
         <ProjectIndex repos={repos} />
-        <Contributions />
+        <Contributions repos={repos} />
         <About />
       </main>
       <SiteFooter />
